@@ -2,11 +2,19 @@
 #BS Computer Engineering 1-5
 #Final Project: COVID Contact Tracing App
 
+import tkinter as tk
 
 #PSEUDOCODE
 
-#Create class ContactTracing
+#Create class ContactTracing and the GUI
+class ContactTracing:
+    def __init__ (self):
+        self.window = tk.Tk
+        self.window.title = ("Covid-19 Contact Tracing App")
 
+        self.window.geometry("500x500")
+        self.window.configure(bg="green")
+        self.window.resizable(True, True)
     #Add file and its path
 
     #Create Method: save to file 
