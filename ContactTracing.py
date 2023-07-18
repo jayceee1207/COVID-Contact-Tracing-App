@@ -203,11 +203,24 @@ class ContactTracing:
         self.add_window.destroy()
         messagebox.showinfo("Success")
 
-        
-
     #Create Method: edit contact
-
+    def edit_contact():
         #select entry number from the list
+        if not self.entries:
+            messagebox.showerror("Error", "No contacts available.")
+            return
+
+        self.edit_window = tk.Toplevel(self.window)
+        self.edit_window.title("Edit Contact")
+
+        self.edit_label = tk.Label(self.edit_window, text="Select Entry Number:")
+        self.edit_label.grid(row=0, column=0, padx=10, pady=5)
+        self.edit_entry = tk.Entry(self.edit_window)
+        self.edit_entry.grid(row=0, column=1, padx=10, pady=5)
+
+        self.edit_button = tk.Button(self.edit_window, text="Edit", command=self.update_contact)
+        self.edit_button.grid(row=1, column=0, columnspan=2, padx=10, pady=5)
+
 
     #Create Method: update contacts
 
