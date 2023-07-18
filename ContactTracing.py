@@ -89,22 +89,61 @@ class ContactTracing:
         self.exit_button.pack(pady=10)
 
     #Create Method: add contact
+    def add_contact(self):
+        self.add_window = tk.Toplevel(self.window)
+        self.add_window.title("Add Contact")
 
         #Infomation for Last Name
+        self.first_name_label = tk.Label(self.add_window, text="First Name:")
+        self.first_name_label.grid(row=0, column=0, padx=10, pady=5)
+        self.first_name_entry = tk.Entry(self.add_window)
+        self.first_name_entry.grid(row=0, column=1, padx=10, pady=5)
 
         #Infomation for First Name
+        self.last_name_label = tk.Label(self.add_window, text="Last Name:")
+        self.last_name_label.grid(row=1, column=0, padx=10, pady=5)
+        self.last_name_entry = tk.Entry(self.add_window)
+        self.last_name_entry.grid(row=1, column=1, padx=10, pady=5)
 
         #Infomation for Address
+        self.address_label = tk.Label(self.add_window, text="Address:")
+        self.address_label.grid(row=2, column=0, padx=10, pady=5)
+        self.address_entry = tk.Entry(self.add_window)
+        self.address_entry.grid(row=2, column=1, padx=10, pady=5)
 
         #Infomation for Email-Address
+        self.email_address_label = tk.Label(self.add_window, text="Email Address:")
+        self.email_address_label.grid(row=3, column=0, padx=10, pady=5)
+        self.email_address_entry = tk.Entry(self.add_window)
+        self.email_address_entry.grid(row=3, column=1, padx=10, pady=5)
 
         #Infomation for Contact Number
+        self.contact_number_label = tk.Label(self.add_window, text="Contact Number:")
+        self.contact_number_label.grid(row=4, column=0, padx=10, pady=5)
+        self.contact_number_entry = tk.Entry(self.add_window)
+        self.contact_number_entry.grid(row=4, column=1, padx=10, pady=5)
 
         #Infomation for Age
+        self.age_label = tk.Label(self.add_window, text="Age:")
+        self.age_label.grid(row=5, column=0, padx=10, pady=5)
+        self.age_entry = tk.Entry(self.add_window)
+        self.age_entry.grid(row=5, column=1, padx=10, pady=5)
 
         #Infomation for Date
+        self.date_label = tk.Label(self.add_window, text="Date (MM/DD/YEAR):")
+        self.date_label.grid(row=6, column=0, padx=10, pady=5)
+        self.date_entry = tk.Entry(self.add_window)
+        self.date_entry.grid(row=6, column=1, padx=10, pady=5)
 
         #Infomation for Time
+        self.time_label = tk.Label(self.add_window, text="Time:")
+        self.time_label.grid(row=7, column=0, padx=10, pady=5)
+        self.time_entry = tk.Entry(self.add_window)
+        self.time_entry.grid(row=7, column=1, padx=10, pady=5)
+
+        self.save_button = tk.Button(self.add_window, text="Save", command=self.save_contact) #save contact will be made to save information for the user
+        self.save_button.grid(row=8, column=0, columnspan=2, padx=10, pady=5)
+
 
     #Create Method:save contact
 
