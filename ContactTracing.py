@@ -223,22 +223,91 @@ class ContactTracing:
 
 
     #Create Method: update contacts
+    def update_contact(self):
+        entry_num = self.edit_entry.get()
 
-        #Infomation for Last Name
+        if not entry_num.isdigit():
+            messagebox.showerror("Error", "Entry number must be a valid integer.")
+            return
 
-        #Infomation for First Name
+        entry_num = int(entry_num)
 
-        #Infomation for Address
+        if entry_num < 1 or entry_num > len(self.entries):
+            messagebox.showerror("Error", "Invalid entry number.")
+            return
+        else:
+            self.edit_window.destroy()
+        try:
+            self.edit_index = entry_num - 1  
+            contact = self.entries[self.edit_index]
 
-        #Infomation for Email-Address
+            self.edit_window = tk.Toplevel(self.window)
+            self.edit_window.title("Edit Contact")
 
-        #Infomation for Contact Number
+            #Infomation for First Name
+            self.first_name_label = tk.Label(self.edit_window, text="First Name:")
+            self.first_name_label.grid(row=0, column=0, padx=10, pady=5)
+            self.first_name_entry = tk.Entry(self.edit_window)
+            self.first_name_entry.grid(row=0, column=1, padx=10, pady=5)
 
-        #Infomation for Age
 
-        #Infomation for Date
+            #Infomation for Last Name
+            self.last_name_label = tk.Label(self.edit_window, text="Last Name:")
+            self.last_name_label.grid(row=1, column=0, padx=10, pady=5)
+            self.last_name_entry = tk.Entry(self.edit_window)
+            self.last_name_entry.grid(row=1, column=1, padx=10, pady=5)
 
-        #Infomation for Time
+            #Infomation for Address
+            self.address_label = tk.Label(self.edit_window, text="Address:")
+            self.address_label.grid(row=2, column=0, padx=10, pady=5)
+            self.address_entry = tk.Entry(self.edit_window)
+            self.address_entry.grid(row=2, column=1, padx=10, pady=5)
+
+            #Infomation for Email-Address
+            self.email_address_label = tk.Label(self.edit_window, text="Email Address:")
+            self.email_address_label.grid(row=3, column=0, padx=10, pady=5)
+            self.email_address_entry = tk.Entry(self.edit_window)
+            self.email_address_entry.grid(row=3, column=1, padx=10, pady=5)
+
+            #Infomation for Contact Number
+            self.contact_number_label = tk.Label(self.edit_window, text="Contact Number:")
+            self.contact_number_label.grid(row=4, column=0, padx=10, pady=5)
+            self.contact_number_entry = tk.Entry(self.edit_window)
+            self.contact_number_entry.grid(row=4, column=1, padx=10, pady=5)
+
+            #Infomation for Age
+            self.age_label = tk.Label(self.edit_window, text="Age:")
+            self.age_label.grid(row=5, column=0, padx=10, pady=5)
+            self.age_entry = tk.Entry(self.edit_window)
+            self.age_entry.grid(row=5, column=1, padx=10, pady=5)
+
+            #Infomation for Date
+            self.date_label = tk.Label(self.edit_window, text="Date:")
+            self.date_label.grid(row=6, column=0, padx=10, pady=5)
+            self.date_entry = tk.Entry(self.edit_window)
+            self.date_entry.grid(row=6, column=1, padx=10, pady=5)
+
+            #Infomation for Time
+            self.time_label = tk.Label(self.edit_window, text="Time:")
+            self.time_label.grid(row=7, column=0, padx=10, pady=5)
+            self.time_entry = tk.Entry(self.edit_window)
+            self.time_entry.grid(row=7, column=1, padx=10, pady=5)
+
+            self.save_button = tk.Button(self.edit_window, text="Save", command=self.save_edit)
+            self.save_button.grid(row=8, column=0, columnspan=2, padx=10, pady=5)
+
+            self.first_name_entry.insert(tk.END, contact[0])
+            self.last_name_entry.insert(tk.END, contact[1])
+            self.address_entry.insert(tk.END, contact[2])
+            self.email_address_entry.insert(tk.END, contact[3])
+            self.contact_number_entry.insert(tk.END, contact[4])
+            self.age_entry.insert(tk.END, contact[5])
+            self.date_entry.insert(tk.END, contact[6])
+            self.time_entry.insert(tk.END, contact[7])
+
+        except ValueError:
+                messagebox.showinfo("Invalid Input")
+
 
     #Create Method: save_edit 
 
