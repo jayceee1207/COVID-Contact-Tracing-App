@@ -47,9 +47,46 @@ class ContactTracing:
                 messagebox.showinfo("Success", "Contact Information was saved successfully.")
             except IOError:
                 messagebox.showerror("Error", "Failed to save contact information to file.")
+    
     #Create Method: save as file
-
+    def save_as_file(self):
         #Save contact information
+        file_path = filedialog.asksaveasfilename(title="Save Contact Information", defaultextension=".csv", filetypes=[("CSV Files", "*.csv")])
+        if file_path:
+            try:
+                with open(file_path, "w", newline="") as file:
+                    writer = csv.writer(file)
+                    writer.writerows(self.entries)
+                self.file_path = file_path
+                messagebox.showinfo("Success", "Contact information was saved successfully.")
+            except IOError:
+                messagebox.showerror("Error", "Failed to save contact information to file.")
+        
+    #Create widgets for default screen for user after opening
+    def create_widgets(self):
+        self.label = tk.Label(self.window, width=30, text="Contact Tracing App")
+        self.label.pack(pady=10)
+
+        self.file_button = tk.Button(self.window, width=20, text="Select File", background='white', command=self.select_file) #this is to select file we want to open.
+        self.file_button.pack(pady=10)
+
+        self.add_button = tk.Button(self.window, width=20, text="Add Contact", background='white', command=self.add_contact) #we will make add contact to add information
+        self.add_button.pack(pady=15)
+
+        self.edit_button = tk.Button(self.window, width=20, text="Edit Contact", background='white', command=self.edit_contact) #we wil make edit contact  function to edit all the inputted contact of the user
+        self.edit_button.pack(pady=10)
+
+        self.delete_button = tk.Button(self.window, width=20, text="Delete Contact", background='white', command=self.delete_contact) #we will make delete contact to delete information we wish to remove.
+        self.delete_button.pack(pady=15)
+
+        self.view_button = tk.Button(self.window, width=20, text="View Contacts", background='white', command=self.view_contacts) #we will make view contacts function to view all the information
+        self.view_button.pack(pady=10)
+
+        self.search_button = tk.Button(self.window, width=20, text="Search Address Book", background='white', font=("Times New Roman", 12, "bold"), command=self.search_address_book) #we will make search address book function to search all the information of the user.
+        self.search_button.pack(pady=15)
+
+        self.exit_button = tk.Button(self.window, width=10, text="Exit", background='white', command=self.on_exit) #we will make on_exit function
+        self.exit_button.pack(pady=10)
 
     #Create Method: add contact
 
