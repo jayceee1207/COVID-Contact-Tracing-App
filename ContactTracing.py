@@ -77,3 +77,5 @@ class ContactTracing:
 
         #search criteria: 
 
+contact_tracing = ContactTracing()
+contact_tracing.run()
