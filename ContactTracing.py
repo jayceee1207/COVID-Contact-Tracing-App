@@ -146,8 +146,64 @@ class ContactTracing:
 
 
     #Create Method:save contact
-
+    def save_contact(self):
+        first_name = self.first_name_entry.get()
+        last_name = self.last_name_entry.get()
+        address = self.address_entry.get()
+        email_address = self.email_address_entry.get()
+        contact_number = self.contact_number_entry.get()
+        age = self.age_entry.get()
+        date = self.date_entry.get()
+        time = self.time_entry.get()
         #add error handlings for the information listed by the user.
+        if not first_name or not last_name or not address:
+            messagebox.showerror("Error")
+            return
+
+        if not re.match(r'^[a-z\s]+$', first_name):
+            messagebox.showerror("Error", "First name should only contain letters and spaces.")
+            return
+
+        if not re.match(r'^[a-z\s]+$', last_name):
+            messagebox.showerror("Error", "Last name should only contain letters and spaces.")
+            return
+
+        if not re.match(r'^[\+\d]+$', contact_number):
+            messagebox.showerror("Error", "Contact number should only, digits, and spaces.")
+            return
+
+        # Validate the maximum of 15 integers
+        contact_number_digits = re.findall(r'\d', contact_number)
+        num_digits = len(contact_number_digits)
+        if num_digits < 5 or num_digits > 14:
+            messagebox.showerror("Error", "Contact number should contain between 5 and 14 digits.")
+            return
+        
+        #To ensure that they will input their correct email format
+        if "@" not in email_address or "." not in email_address:
+            messagebox.showerror("Error", "Please enter a valid email address. It must contain '@' and '.'")
+            return
+
+        # Check if the contact is being edited
+        if self.edit_index is not None:
+            # Update the existing entry
+            self.entries[self.edit_index][0] = first_name
+            self.entries[self.edit_index][1] = last_name
+            self.entries[self.edit_index][2] = address
+            self.entries[self.edit_index][3] = email_address
+            self.entries[self.edit_index][4] = contact_number
+            self.entries[self.edit_index][5] = age
+            self.entries[self.edit_index][6] = date
+            self.entries[self.edit_index][7] = time
+
+        else:
+            # Add a new entry
+            self.entries.append([first_name, last_name, address,email_address, contact_number, age,date, time ])
+
+        self.add_window.destroy()
+        messagebox.showinfo("Success")
+
+        
 
     #Create Method: edit contact
 
