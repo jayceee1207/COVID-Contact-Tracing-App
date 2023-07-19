@@ -478,7 +478,20 @@ class ContactTracing:
         pass
     
     def display_search_results(self, results):
-        pass
+        self.results_text.delete(tk.END)
+        if not results:
+            self.results_text.insert(tk.END, "No results found.")
+        else:
+            for result in results:
+                self.results_text.insert(tk.END, f"First Name: {result[0]}\n")
+                self.results_text.insert(tk.END, f"Last Name: {result[1]}\n")
+                self.results_text.insert(tk.END, f"Address: {result[2]}\n")
+                self.results_text.insert(tk.END, f"Email-address: {result[3]}\n")
+                self.results_text.insert(tk.END, f"Contact Number: {result[4]}\n")
+                self.results_text.insert(tk.END, f"Age: {result[5]}\n")
+                self.results_text.insert(tk.END, f"Date: {result[6]}\n")
+                self.results_text.insert(tk.END, f"Time: {result[7]}\n")
+
 
     #add functions to validate email, phone number if there are same contacts
     def validate_email(self, email):
