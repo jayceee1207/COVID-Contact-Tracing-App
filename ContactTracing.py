@@ -313,6 +313,17 @@ class ContactTracing:
 
 
     #Create Method: save_edit 
+    def save_edit(self):
+        first_name = self.first_name_entry.get()
+        last_name = self.last_name_entry.get()
+        address = self.address_entry.get()
+        email_address = self.email_address_entry.get()
+        contact_number = self.contact_number_entry.get()
+        age = self.age_entry.get()
+        date = self.date_entry.get()
+        time = self.time_entry.get()
+
+        
 
     #Create Method: delete contact
 
