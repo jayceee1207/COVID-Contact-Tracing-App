@@ -14,6 +14,9 @@ class ContactTracing:
     def __init__ (self):
         self.window = tk.Tk
         self.window.title = ("Covid-19 Contact Tracing App")
+        self.entries = []
+        self.file_path = ""
+        self.edit_index = None
 
         self.window.geometry("500x500")
         self.window.configure(bg="green")
