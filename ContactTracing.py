@@ -482,10 +482,12 @@ class ContactTracing:
 
     #add functions to validate email, phone number if there are same contacts
     def validate_email(self, email):
-        pass
+        pattern = r"^[a-zA-Z0-9_.+-]+[a-zA-Z0-9-.]+$"
+        return re.match(pattern, email)
 
     def validate_phone(self, phone):
-        pass
+        pattern = r"^\d"
+        return re.match(pattern, phone)
 
     def get_selected_index(self):
         selection = self.view_window.focus()
