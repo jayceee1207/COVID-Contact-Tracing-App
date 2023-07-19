@@ -479,7 +479,7 @@ class ContactTracing:
     
     def display_search_results(self, results):
         pass
-    
+
     #add functions to validate email, phone number if there are same contacts
     def validate_email(self, email):
         pass
@@ -490,10 +490,16 @@ class ContactTracing:
     def get_selected_index(self):
         pass
     def on_exit(self):
-        pass
+        confirmed = messagebox.askyesno("Confirmation", "Are you sure you want to exit?")
+        if confirmed:
+            self.save_to_file()
+            self.window.destroy()
 
     def on_closing(self):
-        pass
+        if messagebox.askokcancel("Exit", "Do you want to exit?"):
+            self.save_to_file()
+            self.window.destroy()
+
 
     def run(self):
         pass
