@@ -323,7 +323,46 @@ class ContactTracing:
         date = self.date_entry.get()
         time = self.time_entry.get()
 
+        if not first_name or not last_name or not address:
+                messagebox.showerror("Error", "Please fill in all fields.")
+                return
+            
+        contact = (first_name, last_name, address, email_address, contact_number, age, date, time)
+
+        if not re.match(r'^[a-z\s]+$', first_name):
+            messagebox.showerror("Error", "First name should only contain letters and spaces.")
+            return
+
+        if not re.match(r'^[a-z\s]+$', last_name):
+                messagebox.showerror("Error", "Last name should only contain letters and spaces.")
+                return
+
+        if not re.match(r'^[\+\s]+$', contact_number):
+            messagebox.showerror("Error", "Contact number should only contain '+', digits, and spaces.")
+            return
         
+        if "@" not in email_address or "." not in email_address:
+            messagebox.showerror("Error", "Please enter a valid email address. It must contain '@' and '.'")
+            return
+        
+        if not re.match(r'^[\+\s]+$', age):
+            messagebox.showerror("Error", "Age should only contain digits.")
+            return
+        
+            
+        if self.edit_index is not None:
+            if self.edit_index >= len(self.entries):
+                messagebox.showerror("Error", "Invalid entry index.")
+                return
+
+            self.entries[self.edit_index] = contact
+            messagebox.showinfo("Success", "Contact updated successfully.")
+        else:
+            self.entries.append(contact)
+            messagebox.showinfo("Success", "Contact updated successfully.")
+        
+        self.edit_window.destroy()
+
 
     #Create Method: delete contact
 
