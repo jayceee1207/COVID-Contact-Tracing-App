@@ -400,6 +400,74 @@ class ContactTracing:
 
 
     #Create Method: view contact
+    def view_contacts(self):
+        if not self.entries:
+            messagebox.showerror("Info", "Address book is empty.")
+            return
+
+        self.view_window = tk.Toplevel(self.window)
+        self.view_window.title("View Contacts")
+        self.view_window.geometry("1000x900")
+
+        self.canvas = tk.Canvas(self.view_window)
+        self.canvas.pack(side=tk.RIGHT, fill=tk.BOTH, expand=True)
+
+        self.scrollbar = tk.Scrollbar(self.view_window, command=self.canvas.yview)
+        self.scrollbar.pack(side=tk.LEFT, fill=tk.Y)
+
+        self.canvas.configure(yscrollcommand=self.scrollbar.set)
+        self.canvas.bind("<Configure>", lambda e: self.canvas.configure(scrollregion=self.canvas.bbox("all")))
+
+        self.view_frame = tk.Frame(self.canvas)
+        self.canvas.create_window((0, 0), window=self.view_frame)
+        labels = ["Entry #", "First Name", "Last Name", "Address", "Email-Address","Contact Number","Age", "Date", "Time"]
+
+        for col, label in enumerate(labels):
+            column_label = tk.Label(self.view_frame, text=label, padx=10, pady=5)
+            column_label.grid(row=0, column=col)
+
+        for i, contact in enumerate(self.entries, 1):
+            entry_number_label = tk.Label(self.view_frame, text=str(i), padx=10, pady=5)
+            entry_number_label.grid(row=i, column=0)
+
+            for col, value in enumerate(contact, 1):
+                entry_label = tk.Label(self.view_frame, text=value, padx=10, pady=5)
+                entry_label.grid(row=i, column=col)
+
+        self.view_frame.grid_columnconfigure(0, weight=1)
+        self.view_frame.grid_rowconfigure(0, weight=1)
+
+        self.scrollbar.config(command=self.canvas.yview)
+
+    def search_address_book(self):
+        if not self.entries:
+            messagebox.showinfo("Info", "Address book is empty.")
+            return
+        self.search_window = tk.Toplevel(self.window)
+        self.search_window.title("Search Address Book")
+
+        self.criteria_label = tk.Label(self.search_window, text="Search Criteria:")
+        self.criteria_label.grid(row=0, column=0, padx=10, pady=5)
+
+        self.criteria_var = tk.StringVar()
+        self.criteria_var.set("First Name")
+
+        self.criteria_dropdown = tk.OptionMenu(self.search_window, self.criteria_var, "First Name", "Last Name",
+                                               "Address", "Contact Number","Date")
+        self.criteria_dropdown.grid(row=0, column=1, padx=10, pady=5)
+
+        self.query_label = tk.Label(self.search_window, text="Query:")
+        self.query_label.grid(row=0, column=0, padx=10, pady=5)
+
+        self.query_entry = tk.Entry(self.search_window)
+        self.query_entry.grid(row=0, column=1, padx=10, pady=5)
+
+        self.search_button = tk.Button(self.search_window, text="Search", command=self.perform_search)
+        self.search_button.grid(row=1, column=0, columnspan=2, padx=10, pady=5)
+
+        self.results_text = tk.Text(self.search_window, width=50, height=10)
+        self.results_text.grid(row=2, column=0, columnspan=2, padx=10, pady=5)
+
 
     #Create Method: search contact
 
