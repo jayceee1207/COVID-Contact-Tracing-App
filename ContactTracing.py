@@ -488,7 +488,14 @@ class ContactTracing:
         pass
 
     def get_selected_index(self):
-        pass
+        selection = self.view_window.focus()
+        if selection:
+            index = int(self.view_window.item(selection)["text"])
+            return
+        else:
+            messagebox.showinfo("Info", "Please select a contact.")
+            return
+
     def on_exit(self):
         confirmed = messagebox.askyesno("Confirmation", "Are you sure you want to exit?")
         if confirmed:
