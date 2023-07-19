@@ -441,10 +441,10 @@ class ContactTracing:
 
     def search_address_book(self):
         if not self.entries:
-            messagebox.showinfo("Info", "Address book is empty.")
+            messagebox.showinfo("Info", "Contact information is empty.")
             return
         self.search_window = tk.Toplevel(self.window)
-        self.search_window.title("Search Address Book")
+        self.search_window.title("Search Contact information")
 
         self.criteria_label = tk.Label(self.search_window, text="Search Criteria:")
         self.criteria_label.grid(row=0, column=0, padx=10, pady=5)
@@ -462,16 +462,41 @@ class ContactTracing:
         self.query_entry = tk.Entry(self.search_window)
         self.query_entry.grid(row=0, column=1, padx=10, pady=5)
 
-        self.search_button = tk.Button(self.search_window, text="Search", command=self.perform_search)
+        self.search_button = tk.Button(self.search_window, text="Search", command=self.perform_search) #we will make a function for perform_search
         self.search_button.grid(row=1, column=0, columnspan=2, padx=10, pady=5)
 
         self.results_text = tk.Text(self.search_window, width=50, height=10)
         self.results_text.grid(row=2, column=0, columnspan=2, padx=10, pady=5)
 
-
-    #Create Method: search contact
+    def search_address_book(self):
+        pass
+    #Create Method: perform_search contact
 
         #search criteria: 
+
+    def perform_search(self):
+        pass
+    
+    def display_search_results(self, results):
+        pass
+    
+    #add functions to validate email, phone number if there are same contacts
+    def validate_email(self, email):
+        pass
+
+    def validate_phone(self, phone):
+        pass
+
+    def get_selected_index(self):
+        pass
+    def on_exit(self):
+        pass
+
+    def on_closing(self):
+        pass
+
+    def run(self):
+        pass
 
 contact_tracing = ContactTracing()
 contact_tracing.run()
