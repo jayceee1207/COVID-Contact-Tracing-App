@@ -468,14 +468,40 @@ class ContactTracing:
         self.results_text = tk.Text(self.search_window, width=50, height=10)
         self.results_text.grid(row=2, column=0, columnspan=2, padx=10, pady=5)
 
-    def search_address_book(self):
-        pass
-    #Create Method: perform_search contact
+    #perform search function to search for the information in the list
 
-        #search criteria: 
 
     def perform_search(self):
-        pass
+        criteria = self.criteria_var.get()
+        query = self.query_entry.get()
+
+        if not query:
+            messagebox.showinfo("Please enter a query.")
+            return
+
+        # Convert all query and entry strings to lowercase for case-insensitive search
+        query = query.lower()
+        self.entries = [[entry_item.lower() if isinstance(entry_item, str)] for
+                        entry in self.entries]
+
+        results = []
+        if criteria == "First Name":
+            results = [entry for entry in self.entries if query in entry[0]]
+        elif criteria == "Last Name":
+            results = [entry for entry in self.entries if query in entry[1]]
+        elif criteria == "Address":
+            results = [entry for entry in self.entries if query in entry[2]]
+        elif criteria == "Email-address":
+            results = [entry for entry in self.entries if query in entry[3]]
+        elif criteria == "Contact Number":
+            results = [entry for entry in self.entries if query in entry[4]]
+        elif criteria == "Age":
+            results = [entry for entry in self.entries if query in str(entry[5])]
+        elif criteria == "Date":
+            results = [entry for entry in self.entries if query in str(entry[6])]
+        elif criteria == "Time":
+            results = [entry for entry in self.entries if query in str(entry[7])
+
     
     def display_search_results(self, results):
         self.results_text.delete(tk.END)
