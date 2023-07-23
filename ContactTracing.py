@@ -189,14 +189,15 @@ class ContactTracing:
         time = self.time_entry.get()
         #add error handlings for the information listed by the user.
         if not first_name or not last_name or not address:
-            messagebox.showerror("Error")
+            messagebox.showerror("Error!", "Please fill all the fields.")
             return
 
-        if not re.match(r'^[a-z\s]+$', first_name):
+                        #add uppercase so it could still accept capitalized letters
+        if not re.match(r'^[a-zA-Z\s]+$', first_name):
             messagebox.showerror("Error", "First name should only contain letters and spaces.")
             return
-
-        if not re.match(r'^[a-z\s]+$', last_name):
+                        #add uppercase so it could still accept capitalized letters
+        if not re.match(r'^[a-zA-Z\s]+$', last_name):
             messagebox.showerror("Error", "Last name should only contain letters and spaces.")
             return
 
