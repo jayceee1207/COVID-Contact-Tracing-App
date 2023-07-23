@@ -408,7 +408,7 @@ class ContactTracing:
         self.delete_label = tk.Label(self.delete_window, text="Enter Entry Number:")
         self.delete_label.grid(row=0, column=0, padx=10, pady=5)
         self.delete_entry = tk.Entry(self.delete_window)
-        self.delete_entry.grid(row=1, column=0, padx=10, pady=5)
+        self.delete_entry.grid(row=0, column=1, padx=10, pady=5)
 
         self.delete_button = tk.Button(self.delete_window, text="Delete", command=self.remove_contact)
         self.delete_button.grid(row=1, column=0, columnspan=0, padx=10, pady=5)
