@@ -425,8 +425,9 @@ class ContactTracing:
         if entry_num < 1 or entry_num > len(self.entries):
             messagebox.showerror("Error", "Invalid entry number.")
             return
-
-        self.entries.pop(entry_num)
+        
+        #I put -1 because if the user input 1, the position of it in the sequence is 2
+        self.entries.pop(entry_num - 1)
         self.delete_window.destroy()
         messagebox.showinfo("Success", "Contact deleted successfully.")
 
