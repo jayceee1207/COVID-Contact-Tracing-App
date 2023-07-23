@@ -13,7 +13,7 @@ import re
 class ContactTracing:
     def __init__ (self):
         self.window = tk.Tk() # Corrected line to create an instance of the main window
-        self.window.title = ("Covid-19 Contact Tracing App")
+        self.window.title ("Covid-19 Contact Tracing App") 
         self.entries = []
         self.file_path = ""
         self.edit_index = None
