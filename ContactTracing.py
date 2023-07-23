@@ -231,10 +231,10 @@ class ContactTracing:
 
         else:
             # Add a new entry
-            self.entries.append([first_name, last_name, address,email_address, contact_number, age,date, time ])
+            self.entries.append([first_name, last_name, address,email_address, contact_number, age, date, time ])
 
         self.add_window.destroy()
-        messagebox.showinfo("Success")
+        messagebox.showinfo("Success", "Contact saved successfully.")
 
     #Create Method: edit contact
     def edit_contact():
