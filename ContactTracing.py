@@ -440,32 +440,32 @@ class ContactTracing:
 
         self.view_window = tk.Toplevel(self.window)
         self.view_window.title("View Contacts")
-        self.view_window.geometry("1000x900")
+        self.view_window.geometry("1200x1100")
 
         self.canvas = tk.Canvas(self.view_window)
-        self.canvas.pack(side=tk.RIGHT, fill=tk.BOTH, expand=True)
+        self.canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
 
         self.scrollbar = tk.Scrollbar(self.view_window, command=self.canvas.yview)
-        self.scrollbar.pack(side=tk.LEFT, fill=tk.Y)
+        self.scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
 
         self.canvas.configure(yscrollcommand=self.scrollbar.set)
         self.canvas.bind("<Configure>", lambda e: self.canvas.configure(scrollregion=self.canvas.bbox("all")))
 
         self.view_frame = tk.Frame(self.canvas)
-        self.canvas.create_window((0, 0), window=self.view_frame)
+        self.canvas.create_window((0, 0), window=self.view_frame, anchor="nw")
         labels = ["Entry #", "First Name", "Last Name", "Address", "Email-Address","Contact Number","Age", "Date", "Time"]
 
         for col, label in enumerate(labels):
-            column_label = tk.Label(self.view_frame, text=label, padx=10, pady=5)
-            column_label.grid(row=0, column=col)
+            column_label = tk.Label(self.view_frame, text=label, padx=10, pady=5, font=("Arial", 12, "bold"))
+            column_label.grid(row=0, column=col, sticky = "nsew")
 
         for i, contact in enumerate(self.entries, 1):
-            entry_number_label = tk.Label(self.view_frame, text=str(i), padx=10, pady=5)
-            entry_number_label.grid(row=i, column=0)
+            entry_number_label = tk.Label(self.view_frame, text=str(i), padx=10, pady=5, font=("Arial", 12, "bold"))
+            entry_number_label.grid(row=i, column=0, sticky = "nsew")
 
             for col, value in enumerate(contact, 1):
-                entry_label = tk.Label(self.view_frame, text=value, padx=10, pady=5)
-                entry_label.grid(row=i, column=col)
+                entry_label = tk.Label(self.view_frame, text=value, padx=10, pady=5, font=("Arial", 12, "bold"))
+                entry_label.grid(row=i, column=col , sticky = "nsew")
 
         self.view_frame.grid_columnconfigure(0, weight=1)
         self.view_frame.grid_rowconfigure(0, weight=1)
