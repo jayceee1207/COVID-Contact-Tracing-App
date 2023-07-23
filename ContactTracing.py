@@ -237,7 +237,7 @@ class ContactTracing:
         messagebox.showinfo("Success", "Contact saved successfully.")
 
     #Create Method: edit contact
-    def edit_contact():
+    def edit_contact(self):
         #select entry number from the list
         if not self.entries:
             messagebox.showerror("Error", "No contacts available.")
@@ -339,7 +339,7 @@ class ContactTracing:
             self.time_entry.insert(tk.END, contact[7])
 
         except ValueError:
-                messagebox.showinfo("Invalid Input")
+                messagebox.showinfo("Invalid Input","Entry number must be a valid number.")
 
 
     #Create Method: save_edit 
@@ -359,15 +359,17 @@ class ContactTracing:
             
         contact = (first_name, last_name, address, email_address, contact_number, age, date, time)
 
-        if not re.match(r'^[a-z\s]+$', first_name):
+                        #add uppercase so it could still accept capitalized letters
+        if not re.match(r'^[a-zA-Z\s]+$', first_name):
             messagebox.showerror("Error", "First name should only contain letters and spaces.")
             return
-
-        if not re.match(r'^[a-z\s]+$', last_name):
+                        #add uppercase so it could still accept capitalized letters
+        if not re.match(r'^[a-zA-Z\s]+$', last_name):
                 messagebox.showerror("Error", "Last name should only contain letters and spaces.")
                 return
-
-        if not re.match(r'^[\+\s]+$', contact_number):
+                         
+                        #add \d to specify integer values
+        if not re.match(r'^[\+\d\s]+$', contact_number):
             messagebox.showerror("Error", "Contact number should only contain '+', digits, and spaces.")
             return
         
@@ -375,7 +377,7 @@ class ContactTracing:
             messagebox.showerror("Error", "Please enter a valid email address. It must contain '@' and '.'")
             return
         
-        if not re.match(r'^[\+\s]+$', age):
+        if not re.match(r'^[\+\d\s]+$', age):
             messagebox.showerror("Error", "Age should only contain digits.")
             return
         
