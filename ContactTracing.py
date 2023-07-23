@@ -533,7 +533,7 @@ class ContactTracing:
         elif criteria == "Date":
             results = [entry for entry in self.entries if query in str(entry[6])]
         elif criteria == "Time":
-            results = [entry for entry in self.entries if query in str(entry[7])
+            results = [entry for entry in self.entries if query in str(entry[7])] #I forgot to put []
 
     
     def display_search_results(self, results):
@@ -568,7 +568,7 @@ class ContactTracing:
             return
         else:
             messagebox.showinfo("Info", "Please select a contact.")
-            return
+            return None
 
     def on_exit(self):
         confirmed = messagebox.askyesno("Confirmation", "Are you sure you want to exit?")
