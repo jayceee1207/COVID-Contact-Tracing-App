@@ -200,9 +200,9 @@ class ContactTracing:
         if not re.match(r'^[a-zA-Z\s]+$', last_name):
             messagebox.showerror("Error", "Last name should only contain letters and spaces.")
             return
-
-        if not re.match(r'^[\+\d]+$', contact_number):
-            messagebox.showerror("Error", "Contact number should only, digits, and spaces.")
+                        #add string operator to know where the string is to be specified
+        if not re.match(r'^[\+\d\s]+$', contact_number):
+            messagebox.showerror("Error", "Contact number should only contain '+', digits, and spaces.")
             return
 
         # Validate the maximum of 15 integers
