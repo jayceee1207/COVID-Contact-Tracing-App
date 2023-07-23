@@ -509,7 +509,7 @@ class ContactTracing:
         query = self.query_entry.get()
 
         if not query:
-            messagebox.showinfo("Please enter a query.")
+            messagebox.showerror("Please enter a query.")
             return
 
         # Convert all query and entry strings to lowercase for case-insensitive search
@@ -537,7 +537,7 @@ class ContactTracing:
 
     
     def display_search_results(self, results):
-        self.results_text.delete(tk.END)
+        self.results_text.delete("1.0", tk.END)
         if not results:
             self.results_text.insert(tk.END, "No results found.")
         else:
@@ -550,6 +550,7 @@ class ContactTracing:
                 self.results_text.insert(tk.END, f"Age: {result[5]}\n")
                 self.results_text.insert(tk.END, f"Date: {result[6]}\n")
                 self.results_text.insert(tk.END, f"Time: {result[7]}\n")
+                self.results_text.insert(tk.END, "-------------------------\n")
 
 
     #add functions to validate email, phone number if there are same contacts
@@ -558,7 +559,7 @@ class ContactTracing:
         return re.match(pattern, email)
 
     def validate_phone(self, phone):
-        pattern = r"^\d"
+        pattern = r"^\d{10}$"
         return re.match(pattern, phone)
 
     def get_selected_index(self):
