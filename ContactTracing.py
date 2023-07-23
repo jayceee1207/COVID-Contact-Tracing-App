@@ -514,8 +514,7 @@ class ContactTracing:
 
         # Convert all query and entry strings to lowercase for case-insensitive search
         query = query.lower()
-        self.entries = [[entry_item.lower() if isinstance(entry_item, str)] for
-                        entry in self.entries]
+        self.entries = [[entry_item.lower() if isinstance(entry_item, str) else entry_item for entry_item in entry] for entry in self.entries]
 
         results = []
         if criteria == "First Name":
