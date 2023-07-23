@@ -490,16 +490,16 @@ class ContactTracing:
         self.criteria_dropdown.grid(row=0, column=1, padx=10, pady=5)
 
         self.query_label = tk.Label(self.search_window, text="Query:")
-        self.query_label.grid(row=0, column=0, padx=10, pady=5)
+        self.query_label.grid(row=1, column=0, padx=10, pady=5)
 
         self.query_entry = tk.Entry(self.search_window)
-        self.query_entry.grid(row=0, column=1, padx=10, pady=5)
+        self.query_entry.grid(row=1, column=1, padx=10, pady=5)
 
         self.search_button = tk.Button(self.search_window, text="Search", command=self.perform_search) #we will make a function for perform_search
-        self.search_button.grid(row=1, column=0, columnspan=2, padx=10, pady=5)
+        self.search_button.grid(row=2, column=0, columnspan=2, padx=10, pady=5)
 
         self.results_text = tk.Text(self.search_window, width=50, height=10)
-        self.results_text.grid(row=2, column=0, columnspan=2, padx=10, pady=5)
+        self.results_text.grid(row=3, column=0, columnspan=2, padx=10, pady=5)
 
     #perform search function to search for the information in the list
 
@@ -509,7 +509,7 @@ class ContactTracing:
         query = self.query_entry.get()
 
         if not query:
-            messagebox.showerror("Please enter a query.")
+            messagebox.showerror("Error", "Please enter a query.")
             return
 
         # Convert all query and entry strings to lowercase for case-insensitive search
