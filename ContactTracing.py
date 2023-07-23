@@ -554,7 +554,7 @@ class ContactTracing:
 
     #add functions to validate email, phone number if there are same contacts
     def validate_email(self, email):
-        pattern = r"^[a-zA-Z0-9_.+-]+[a-zA-Z0-9-.]+$"
+        pattern = r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
         return re.match(pattern, email)
 
     def validate_phone(self, phone):
