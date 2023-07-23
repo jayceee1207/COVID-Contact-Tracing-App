@@ -12,15 +12,17 @@ import re
 #Create class ContactTracing and the GUI
 class ContactTracing:
     def __init__ (self):
-        self.window = tk.Tk
+        self.window = tk.Tk() # Corrected line to create an instance of the main window
         self.window.title = ("Covid-19 Contact Tracing App")
         self.entries = []
         self.file_path = ""
         self.edit_index = None
-
         self.window.geometry("500x500")
         self.window.configure(bg="green")
         self.window.resizable(True, True)
+
+        self.create_widgets()
+
     #Add file and its path
     #To open a CSV file where informatio of user will be stored
     def select_file(self):
