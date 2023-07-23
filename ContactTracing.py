@@ -67,10 +67,16 @@ class ContactTracing:
         
     #Create widgets for default screen for user after opening
     def create_widgets(self):
-        self.label = tk.Label(self.window, width=30, text="Contact Tracing App")
+        self.label = tk.Label(self.window, width=30, background='pink', 
+                              text="Basic Information", 
+                              font=("Helvetica", 20, "bold"))
         self.label.pack(pady=10)
 
-        self.file_button = tk.Button(self.window, width=20, text="Select File", background='white', command=self.select_file) #this is to select file we want to open.
+        self.file_button = tk.Button(self.window, width=20, 
+                                     text="Select File", 
+                                     background='white', 
+                                     font=("Times New Roman", 12, "bold"), 
+                                     command=self.select_file) #this is to select file we want to open.
         self.file_button.pack(pady=10)
 
         self.add_button = tk.Button(self.window, width=20, text="Add Contact", background='white', command=self.add_contact) #we will make add contact to add information
@@ -85,7 +91,7 @@ class ContactTracing:
         self.view_button = tk.Button(self.window, width=20, text="View Contacts", background='white', command=self.view_contacts) #we will make view contacts function to view all the information
         self.view_button.pack(pady=10)
 
-        self.search_button = tk.Button(self.window, width=20, text="Search Address Book", background='white', font=("Times New Roman", 12, "bold"), command=self.search_address_book) #we will make search address book function to search all the information of the user.
+        self.search_button = tk.Button(self.window, width=20, text="Search Contact Information", background='white', font=("Times New Roman", 12, "bold"), command=self.search_contact) #we will make search address book function to search all the information of the user.
         self.search_button.pack(pady=15)
 
         self.exit_button = tk.Button(self.window, width=10, text="Exit", background='white', command=self.on_exit) #we will make on_exit function
@@ -402,7 +408,7 @@ class ContactTracing:
     #Create Method: view contact
     def view_contacts(self):
         if not self.entries:
-            messagebox.showerror("Info", "Address book is empty.")
+            messagebox.showerror("Info", "Contact information is empty.")
             return
 
         self.view_window = tk.Toplevel(self.window)
@@ -439,7 +445,7 @@ class ContactTracing:
 
         self.scrollbar.config(command=self.canvas.yview)
 
-    def search_address_book(self):
+    def search_contact (self):
         if not self.entries:
             messagebox.showinfo("Info", "Contact information is empty.")
             return
