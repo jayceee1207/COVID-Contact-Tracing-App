@@ -424,7 +424,7 @@ class ContactTracing:
 
         if entry_num < 1 or entry_num > len(self.entries):
             messagebox.showerror("Error", "Invalid entry number.")
-            return
+            return  
         
         #I put -1 because if the user input 1, the position of it in the sequence is 2
         self.entries.pop(entry_num - 1)
@@ -435,7 +435,7 @@ class ContactTracing:
     #Create Method: view contact
     def view_contacts(self):
         if not self.entries:
-            messagebox.showerror("Info", "Contact information is empty.")
+            messagebox.showinfo("Info", "Contact information is empty.")
             return
 
         self.view_window = tk.Toplevel(self.window)
