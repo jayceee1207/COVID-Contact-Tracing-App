@@ -564,8 +564,8 @@ class ContactTracing:
     def get_selected_index(self):
         selection = self.view_window.focus()
         if selection:
-            index = int(self.view_window.item(selection)["text"])
-            return
+            index = int(self.view_window.item(selection)["text"].split(":")[1].strip())
+            return index
         else:
             messagebox.showinfo("Info", "Please select a contact.")
             return None
