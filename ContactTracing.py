@@ -558,7 +558,7 @@ class ContactTracing:
 
         self.view_window = tk.Toplevel(self.window)
         self.view_window.title("View Contacts")
-        self.view_window.geometry("1500x1100")
+        self.view_window.geometry("1500x500")
 
         self.canvas = tk.Canvas(self.view_window)
         self.canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
@@ -616,7 +616,7 @@ class ContactTracing:
         self.search_button = tk.Button(self.search_window, text="Search", command=self.perform_search) #we will make a function for perform_search
         self.search_button.grid(row=2, column=0, columnspan=2, padx=10, pady=5)
 
-        self.results_text = tk.Text(self.search_window, width=50, height=10)
+        self.results_text = tk.Text(self.search_window, width=50, height=50)
         self.results_text.grid(row=3, column=0, columnspan=2, padx=10, pady=5)
 
     #perform search function to search for the information in the list
@@ -632,8 +632,8 @@ class ContactTracing:
 
         # Convert all query and entry strings to lowercase for case-insensitive search
         query = query.lower()
-        self.entries = [[entry_item.lower() if isinstance(entry_item, str) else entry_item for entry_item in entry] for entry in self.entries]
-
+        self.entries = [[entry_item.lower() if isinstance(entry_item, str) else entry_item for entry_item in entry] for
+                        entry in self.entries]
         results = []
         if criteria == "First Name":
             results = [entry for entry in self.entries if query in entry[0]]
@@ -652,7 +652,8 @@ class ContactTracing:
         elif criteria == "Time":
             results = [entry for entry in self.entries if query in str(entry[7])] #I forgot to put []
 
-    
+        self.display_search_results(results)
+
     def display_search_results(self, results):
         self.results_text.delete("1.0", tk.END)
         if not results:
@@ -668,7 +669,11 @@ class ContactTracing:
                 self.results_text.insert(tk.END, f"Date: {result[6]}\n")
                 self.results_text.insert(tk.END, f"Time: {result[7]}\n")
                 self.results_text.insert(tk.END, f"Temperature: {result[8]}\n")
-                self.results_text.insert(tk.END, "-------------------------\n")
+                self.results_text.insert(tk.END, f"Had fever in the past few days: {result[9]}\n")
+                self.results_text.insert(tk.END, f"Had COVID-19 symptoms: {result[10]}\n")
+                self.results_text.insert(tk.END, f"Travelled internationally: {result[11]}\n")
+                self.results_text.insert(tk.END, f"Had exposure with someone diagnosed with COVID-19: {result[12]}\n")
+                self.results_text.insert(tk.END, "--------------------------------------------------\n")
 
 
     #add functions to validate email, phone number if there are same contacts
