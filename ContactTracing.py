@@ -82,28 +82,28 @@ class ContactTracing:
         self.file_button.pack(pady=10)
 
         self.add_button = tk.Button(self.window, width=20, 
-                                    text="Add Contact", 
+                                    text="Add Information", 
                                     background='white', 
                                     font=("Times New Roman", 12, "bold"),
                                     command=self.add_contact) #we will make add contact to add information
         self.add_button.pack(pady=15)
 
         self.edit_button = tk.Button(self.window, width=20, 
-                                     text="Edit Contact", 
+                                     text="Edit Information", 
                                      background='white', 
                                      font=("Times New Roman", 12, "bold"),
                                      command=self.edit_contact) #we wil make edit contact  function to edit all the inputted contact of the user
         self.edit_button.pack(pady=10)
 
         self.delete_button = tk.Button(self.window, width=20, 
-                                       text="Delete Contact", 
+                                       text="Delete Information", 
                                        background='white', 
                                        font=("Times New Roman", 12, "bold"),
                                        command=self.delete_contact) #we will make delete contact to delete information we wish to remove.
         self.delete_button.pack(pady=15)
 
         self.view_button = tk.Button(self.window, width=20, 
-                                     text="View Contacts", 
+                                     text="View Information", 
                                      background='white', 
                                      font=("Times New Roman", 12, "bold"),
                                      command=self.view_contacts) #we will make view contacts function to view all the information
@@ -183,10 +183,10 @@ class ContactTracing:
         self.title_label.grid(row=10, column=0, columnspan=2, padx=10, pady=5)
 
         #Ask information about their current temperature
-        self.time_label = tk.Label(self.add_window, text="Temperature: ")
-        self.time_label.grid(row=11, column=0, padx=10, pady=5)
-        self.time_entry = tk.Entry(self.add_window)
-        self.time_entry.grid(row=11, column=1, padx=10, pady=5)
+        self.temperature_label = tk.Label(self.add_window, text="Temperature: ")
+        self.temperature_label.grid(row=11, column=0, padx=10, pady=5)
+        self.temperature_entry = tk.Entry(self.add_window)
+        self.temperature_entry.grid(row=11, column=1, padx=10, pady=5)
 
         #Ask whether they had fever in the past few days
         self.fever_label = tk.Label(self.add_window, text="Had fever in the past few days?")
@@ -252,10 +252,10 @@ class ContactTracing:
         self.certify_var = tk.IntVar()
         self.certify_var.set(0)
         #Radiobutton for 'Yes' answer
-        self.certify_yes_radio = tk.Radiobutton(self.add_window, text="Yes", variable=self.had_contact_var, value=1)
+        self.certify_yes_radio = tk.Radiobutton(self.add_window, text="Yes", variable=self.certify_var, value=1)
         self.certify_yes_radio.grid(row=17, column=1, padx=10, pady=5)
         #Radiobutton for 'No' answer
-        self.certify_no_radio = tk.Radiobutton(self.add_window, text="No", variable=self.had_contact_var, value=0)
+        self.certify_no_radio = tk.Radiobutton(self.add_window, text="No", variable=self.certify_var, value=0)
         self.certify_no_radio.grid(row=17, column=2, padx=10, pady=5)
 
 
@@ -273,6 +273,15 @@ class ContactTracing:
         age = self.age_entry.get()
         date = self.date_entry.get()
         time = self.time_entry.get()
+        temperature = self.temperature_entry.get()
+       
+        # Get values from the Yes/No questions
+        fever_answer = self.fever_var.get()
+        symptoms_answer = self.symptoms_var.get()
+        travel_answer = self.travel_var.get()   
+        had_contact_answer = self.had_contact_var.get()
+        certify_answer = self.certify_var.get()
+
         #add error handlings for the information listed by the user.
         if not first_name or not last_name or not address:
             messagebox.showerror("Error!", "Please fill all the fields.")
@@ -314,6 +323,8 @@ class ContactTracing:
             self.entries[self.edit_index][5] = age
             self.entries[self.edit_index][6] = date
             self.entries[self.edit_index][7] = time
+            self.entries[self.edit_index][8] = temperature
+            
 
         else:
             # Add a new entry
@@ -412,6 +423,15 @@ class ContactTracing:
             self.time_entry = tk.Entry(self.edit_window)
             self.time_entry.grid(row=7, column=1, padx=10, pady=5)
 
+            #Information for Temperature
+            #Ask information about their current temperature
+            self.temperature_label = tk.Label(self.add_window, text="Temperature: ")
+            self.temperature_label.grid(row=11, column=0, padx=10, pady=5)
+            self.temperature_entry = tk.Entry(self.add_window)
+            self.temperature_entry.grid(row=11, column=1, padx=10, pady=5)
+
+
+
             self.save_button = tk.Button(self.edit_window, text="Save", command=self.save_edit)
             self.save_button.grid(row=8, column=0, columnspan=2, padx=10, pady=5)
 
@@ -423,6 +443,7 @@ class ContactTracing:
             self.age_entry.insert(tk.END, contact[5])
             self.date_entry.insert(tk.END, contact[6])
             self.time_entry.insert(tk.END, contact[7])
+            self.temperature_entry.insert(tk.END, contact [8])
 
         except ValueError:
                 messagebox.showinfo("Invalid Input","Entry number must be a valid number.")
@@ -526,7 +547,7 @@ class ContactTracing:
 
         self.view_window = tk.Toplevel(self.window)
         self.view_window.title("View Contacts")
-        self.view_window.geometry("1200x1100")
+        self.view_window.geometry("1400x1100")
 
         self.canvas = tk.Canvas(self.view_window)
         self.canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
@@ -539,7 +560,7 @@ class ContactTracing:
 
         self.view_frame = tk.Frame(self.canvas)
         self.canvas.create_window((0, 0), window=self.view_frame, anchor="nw")
-        labels = ["Entry #", "First Name", "Last Name", "Address", "Email-Address","Contact Number","Age", "Date", "Time"]
+        labels = ["Entry #", "First Name", "Last Name", "Address", "Email-Address","Contact Number","Age", "Date", "Time", "Temperature", "Q1", "Q2", "Q3", "Q4", "Certify"]
 
         for col, label in enumerate(labels):
             column_label = tk.Label(self.view_frame, text=label, padx=10, pady=5, font=("Arial", 12, "bold"))
