@@ -183,7 +183,7 @@ class ContactTracing:
         self.title_label.grid(row=10, column=0, columnspan=2, padx=10, pady=5)
 
         #Ask information about their current temperature
-        self.temperature_label = tk.Label(self.add_window, text="Temperature: ")
+        self.temperature_label = tk.Label(self.add_window, text="Temperature (Celcius): ")
         self.temperature_label.grid(row=11, column=0, padx=10, pady=5)
         self.temperature_entry = tk.Entry(self.add_window)
         self.temperature_entry.grid(row=11, column=1, padx=10, pady=5)
@@ -237,7 +237,7 @@ class ContactTracing:
         self.had_contact_yes_radio = tk.Radiobutton(self.add_window, text="Yes", variable=self.had_contact_var, value="Yes")
         self.had_contact_yes_radio.grid(row=15, column=1, padx=10, pady=5)
         #Radiobutton for 'No' answer
-        self.had_contact_no_radio = tk.Radiobutton(self.add_window, text="No", variable=self.had_contact_var, value="Yes")
+        self.had_contact_no_radio = tk.Radiobutton(self.add_window, text="No", variable=self.had_contact_var, value="No")
         self.had_contact_no_radio.grid(row=15, column=2, padx=10, pady=5)
 
 
@@ -255,7 +255,7 @@ class ContactTracing:
         self.certify_yes_radio = tk.Radiobutton(self.add_window, text="Yes", variable=self.certify_var, value="Yes")
         self.certify_yes_radio.grid(row=17, column=1, padx=10, pady=5)
         #Radiobutton for 'No' answer
-        self.certify_no_radio = tk.Radiobutton(self.add_window, text="No", variable=self.certify_var, value="Yes")
+        self.certify_no_radio = tk.Radiobutton(self.add_window, text="No", variable=self.certify_var, value="No")
         self.certify_no_radio.grid(row=17, column=2, padx=10, pady=5)
 
 
@@ -334,7 +334,7 @@ class ContactTracing:
             # Add a new entry
             self.entries.append([first_name, last_name, address,email_address, contact_number, 
                                  age, date, time, temperature, fever_answer, symptoms_answer, travel_answer, 
-                                 had_contact_answer, certify_answer ])
+                                 had_contact_answer, certify_answer])
 
         self.add_window.destroy()
         messagebox.showinfo("Success", "Contact saved successfully.")
@@ -431,31 +431,12 @@ class ContactTracing:
 
             #Information for Temperature
             #Ask information about their current temperature
-            self.temperature_label = tk.Label(self.add_window, text="Temperature: ")
-            self.temperature_label.grid(row=11, column=0, padx=10, pady=5)
-            self.temperature_entry = tk.Entry(self.add_window)
-            self.temperature_entry.grid(row=11, column=1, padx=10, pady=5)
+            self.temperature_label = tk.Label(self.edit_window, text="Temperature (Celcius): ")
+            self.temperature_label.grid(row=8, column=0, padx=10, pady=5)
+            self.temperature_entry = tk.Entry(self.edit_window)
+            self.temperature_entry.grid(row=8, column=1, padx=10, pady=5)
 
-            #Ask whether they had fever in the past few days
-            self.fever_label = tk.Label(self.add_window, text="Had fever in the past few days?")
-            self.fever_label.grid(row=12, column=0, padx=10, pady=5)
-            #Create a Tkinter IntVar to hold the selected value (0 for No, 1 for Yes)
-            self.fever_var = tk.IntVar()
-            self.fever_var.set(0)  
-            #Radiobutton for 'Yes' answer
-            self.fever_yes_radio = tk.Radiobutton(self.add_window, text="Yes", variable=self.fever_var, value=1)
-            self.fever_yes_radio.grid(row=12, column=1, padx=10, pady=5)
-            #Radiobutton for 'No' answer
-            self.fever_no_radio = tk.Radiobutton(self.add_window, text="No", variable=self.fever_var, value=0)
-            self.fever_no_radio.grid(row=12, column=2, padx=10, pady=5)
-
-            
-
-
-
-            self.save_button = tk.Button(self.edit_window, text="Save", command=self.save_edit)
-            self.save_button.grid(row=8, column=0, columnspan=2, padx=10, pady=5)
-
+        
             self.first_name_entry.insert(tk.END, contact[0])
             self.last_name_entry.insert(tk.END, contact[1])
             self.address_entry.insert(tk.END, contact[2])
@@ -465,7 +446,9 @@ class ContactTracing:
             self.date_entry.insert(tk.END, contact[6])
             self.time_entry.insert(tk.END, contact[7])
             self.temperature_entry.insert(tk.END, contact [8])
-            self.fever_answer.insert(tk.END, contact [8])
+            
+            
+
 
         except ValueError:
                 messagebox.showinfo("Invalid Input","Entry number must be a valid number.")
@@ -482,13 +465,13 @@ class ContactTracing:
         date = self.date_entry.get()
         time = self.time_entry.get()
         temperature = self.temperature_entry.get()
-        fever_answer = self.fever_answer.get()
+      
 
         if not first_name or not last_name or not address:
                 messagebox.showerror("Error", "Please fill in all fields.")
                 return
             
-        contact = (first_name, last_name, address, email_address, contact_number, age, date, time, temperature, fever_answer)
+        contact = (first_name, last_name, address, email_address, contact_number, age, date, time, temperature)
 
                         #add uppercase so it could still accept capitalized letters
         if not re.match(r'^[a-zA-Z\s]+$', first_name):
@@ -575,7 +558,7 @@ class ContactTracing:
 
         self.view_window = tk.Toplevel(self.window)
         self.view_window.title("View Contacts")
-        self.view_window.geometry("1400x1100")
+        self.view_window.geometry("1500x1100")
 
         self.canvas = tk.Canvas(self.view_window)
         self.canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
