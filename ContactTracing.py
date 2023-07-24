@@ -192,52 +192,52 @@ class ContactTracing:
         self.fever_label = tk.Label(self.add_window, text="Had fever in the past few days?")
         self.fever_label.grid(row=12, column=0, padx=10, pady=5)
         #Create a Tkinter IntVar to hold the selected value (0 for No, 1 for Yes)
-        self.fever_var = tk.IntVar()
-        self.fever_var.set(0)  
+        self.fever_var = tk.StringVar()
+        self.fever_var.set("No")  
         #Radiobutton for 'Yes' answer
-        self.fever_yes_radio = tk.Radiobutton(self.add_window, text="Yes", variable=self.fever_var, value=1)
+        self.fever_yes_radio = tk.Radiobutton(self.add_window, text="Yes", variable=self.fever_var, value="Yes")
         self.fever_yes_radio.grid(row=12, column=1, padx=10, pady=5)
         #Radiobutton for 'No' answer
-        self.fever_no_radio = tk.Radiobutton(self.add_window, text="No", variable=self.fever_var, value=0)
+        self.fever_no_radio = tk.Radiobutton(self.add_window, text="No", variable=self.fever_var, value="No")
         self.fever_no_radio.grid(row=12, column=2, padx=10, pady=5)
 
         #Ask whether they have following COVID - 19 related symptoms
         self.symptoms_label = tk.Label(self.add_window, text="Do you have any of the following\ncommon symptoms of COVID-19:\n -Fever\n -Headache\n -Sore Throat\n -Flu-like symptoms")
         self.symptoms_label.grid(row=13, column=0, padx=10, pady=5)
         #Create a Tkinter IntVar to hold the selected value (0 for No, 1 for Yes)
-        self.symptoms_var = tk.IntVar()
-        self.symptoms_var.set(0) 
+        self.symptoms_var = tk.StringVar()
+        self.symptoms_var.set("No") 
         #Radiobutton for 'Yes' answer
-        self.symptoms_yes_radio = tk.Radiobutton(self.add_window, text="Yes", variable=self.symptoms_var, value=1)
+        self.symptoms_yes_radio = tk.Radiobutton(self.add_window, text="Yes", variable=self.symptoms_var, value="Yes")
         self.symptoms_yes_radio.grid(row=13, column=1, padx=10, pady=5)
         #Radiobutton for 'No' answer
-        self.symptoms_no_radio = tk.Radiobutton(self.add_window, text="No", variable=self.symptoms_var, value=0)
+        self.symptoms_no_radio = tk.Radiobutton(self.add_window, text="No", variable=self.symptoms_var, value="No")
         self.symptoms_no_radio.grid(row=13, column=2, padx=10, pady=5)
 
         #Ask whether they travelled internationally within the last 14 days
         self.travel_label = tk.Label(self.add_window, text="Have you travelled internationally\nwithin the last 14 days?")
         self.travel_label.grid(row=14, column=0, padx=10, pady=5)
-        #Create a Tkinter IntVar to hold the selected value (0 for No, 1 for Yes)
-        self.travel_var = tk.IntVar()
-        self.travel_var.set(0) 
+        #Create a Tkinter StringVar to hold the selected value 
+        self.travel_var = tk.StringVar()
+        self.travel_var.set("No") 
         #Radiobutton for 'Yes' answer
-        self.travel_yes_radio = tk.Radiobutton(self.add_window, text="Yes", variable=self.travel_var, value=1)
+        self.travel_yes_radio = tk.Radiobutton(self.add_window, text="Yes", variable=self.travel_var, value="Yes")
         self.travel_yes_radio.grid(row=14, column=1, padx=10, pady=5)
         #Radiobutton for 'No' answer
-        self.travel_no_radio = tk.Radiobutton(self.add_window, text="No", variable=self.travel_var, value=0)
+        self.travel_no_radio = tk.Radiobutton(self.add_window, text="No", variable=self.travel_var, value="No")
         self.travel_no_radio.grid(row=14, column=2, padx=10, pady=5)
 
         #Ask whethey they had contact with someone diagnosed with COVID-19
         self.had_contact_label = tk.Label(self.add_window, text="Have you had exposure to someone\ndiagnosed with COVID-19?")
         self.had_contact_label.grid(row=15, column=0, padx=10, pady=5)
         #Create a Tkinter IntVar to hold the selected value (0 for No, 1 for Yes)
-        self.had_contact_var = tk.IntVar()
-        self.had_contact_var.set(0) 
+        self.had_contact_var = tk.StringVar()
+        self.had_contact_var.set("No") 
         #Radiobutton for 'Yes' answer
-        self.had_contact_yes_radio = tk.Radiobutton(self.add_window, text="Yes", variable=self.had_contact_var, value=1)
+        self.had_contact_yes_radio = tk.Radiobutton(self.add_window, text="Yes", variable=self.had_contact_var, value="Yes")
         self.had_contact_yes_radio.grid(row=15, column=1, padx=10, pady=5)
         #Radiobutton for 'No' answer
-        self.had_contact_no_radio = tk.Radiobutton(self.add_window, text="No", variable=self.had_contact_var, value=0)
+        self.had_contact_no_radio = tk.Radiobutton(self.add_window, text="No", variable=self.had_contact_var, value="Yes")
         self.had_contact_no_radio.grid(row=15, column=2, padx=10, pady=5)
 
 
@@ -248,14 +248,14 @@ class ContactTracing:
         #Ask whether they are answering the truth
         self.certify_label = tk.Label(self.add_window, text="I certify that the above history\nis true to the best of my knowledge.")
         self.certify_label.grid(row=17, column=0, padx=10, pady=5)
-        #Create a Tkinter IntVar to hold the selected value (0 for No, 1 for Yes)
-        self.certify_var = tk.IntVar()
-        self.certify_var.set(0)
+        #Create a Tkinter StringVar to hold the selected value (0 for No, 1 for Yes)
+        self.certify_var = tk.StringVar()
+        self.certify_var.set("No")
         #Radiobutton for 'Yes' answer
-        self.certify_yes_radio = tk.Radiobutton(self.add_window, text="Yes", variable=self.certify_var, value=1)
+        self.certify_yes_radio = tk.Radiobutton(self.add_window, text="Yes", variable=self.certify_var, value="Yes")
         self.certify_yes_radio.grid(row=17, column=1, padx=10, pady=5)
         #Radiobutton for 'No' answer
-        self.certify_no_radio = tk.Radiobutton(self.add_window, text="No", variable=self.certify_var, value=0)
+        self.certify_no_radio = tk.Radiobutton(self.add_window, text="No", variable=self.certify_var, value="Yes")
         self.certify_no_radio.grid(row=17, column=2, padx=10, pady=5)
 
 
@@ -324,11 +324,15 @@ class ContactTracing:
             self.entries[self.edit_index][6] = date
             self.entries[self.edit_index][7] = time
             self.entries[self.edit_index][8] = temperature
+            self.entries[self.edit_index][9] = fever_answer
+            
+
+
             
 
         else:
             # Add a new entry
-            self.entries.append([first_name, last_name, address,email_address, contact_number, age, date, time, temperature ])
+            self.entries.append([first_name, last_name, address,email_address, contact_number, age, date, time, temperature, fever_answer ])
 
         self.add_window.destroy()
         messagebox.showinfo("Success", "Contact saved successfully.")
@@ -430,6 +434,19 @@ class ContactTracing:
             self.temperature_entry = tk.Entry(self.add_window)
             self.temperature_entry.grid(row=11, column=1, padx=10, pady=5)
 
+            #Ask whether they had fever in the past few days
+            self.fever_label = tk.Label(self.add_window, text="Had fever in the past few days?")
+            self.fever_label.grid(row=12, column=0, padx=10, pady=5)
+            #Create a Tkinter IntVar to hold the selected value (0 for No, 1 for Yes)
+            self.fever_var = tk.IntVar()
+            self.fever_var.set(0)  
+            #Radiobutton for 'Yes' answer
+            self.fever_yes_radio = tk.Radiobutton(self.add_window, text="Yes", variable=self.fever_var, value=1)
+            self.fever_yes_radio.grid(row=12, column=1, padx=10, pady=5)
+            #Radiobutton for 'No' answer
+            self.fever_no_radio = tk.Radiobutton(self.add_window, text="No", variable=self.fever_var, value=0)
+            self.fever_no_radio.grid(row=12, column=2, padx=10, pady=5)
+
 
 
             self.save_button = tk.Button(self.edit_window, text="Save", command=self.save_edit)
@@ -444,6 +461,7 @@ class ContactTracing:
             self.date_entry.insert(tk.END, contact[6])
             self.time_entry.insert(tk.END, contact[7])
             self.temperature_entry.insert(tk.END, contact [8])
+            self.fever_answer.insert(tk.END, contact [8])
 
         except ValueError:
                 messagebox.showinfo("Invalid Input","Entry number must be a valid number.")
@@ -460,12 +478,13 @@ class ContactTracing:
         date = self.date_entry.get()
         time = self.time_entry.get()
         temperature = self.temperature_entry.get()
+        fever_answer = self.fever_answer.get()
 
         if not first_name or not last_name or not address:
                 messagebox.showerror("Error", "Please fill in all fields.")
                 return
             
-        contact = (first_name, last_name, address, email_address, contact_number, age, date, time, temperature)
+        contact = (first_name, last_name, address, email_address, contact_number, age, date, time, temperature, fever_answer)
 
                         #add uppercase so it could still accept capitalized letters
         if not re.match(r'^[a-zA-Z\s]+$', first_name):
@@ -661,6 +680,7 @@ class ContactTracing:
                 self.results_text.insert(tk.END, f"Age: {result[5]}\n")
                 self.results_text.insert(tk.END, f"Date: {result[6]}\n")
                 self.results_text.insert(tk.END, f"Time: {result[7]}\n")
+                self.results_text.insert(tk.END, f"Temperature: {result[8]}\n")
                 self.results_text.insert(tk.END, "-------------------------\n")
 
 
