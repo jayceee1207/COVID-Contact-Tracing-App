@@ -221,18 +221,24 @@ class ContactTracing:
         self.travel_var = tk.IntVar()
         self.travel_var.set(0) 
         #Radiobutton for 'Yes' answer
-        self.travel_yes_radio = tk.Radiobutton(self.add_window, text="Yes", variable=self.symptoms_var, value=1)
+        self.travel_yes_radio = tk.Radiobutton(self.add_window, text="Yes", variable=self.travel_var, value=1)
         self.travel_yes_radio.grid(row=14, column=1, padx=10, pady=5)
         #Radiobutton for 'No' answer
-        self.travel_no_radio = tk.Radiobutton(self.add_window, text="No", variable=self.symptoms_var, value=0)
+        self.travel_no_radio = tk.Radiobutton(self.add_window, text="No", variable=self.travel_var, value=0)
         self.travel_no_radio.grid(row=14, column=2, padx=10, pady=5)
 
         #Ask whethey they had contact with someone diagnosed with COVID-19
         self.had_contact_label = tk.Label(self.add_window, text="Have you had exposure to someone\ndiagnosed with COVID-19?")
         self.had_contact_label.grid(row=15, column=0, padx=10, pady=5)
         #Create a Tkinter IntVar to hold the selected value (0 for No, 1 for Yes)
+        self.had_contact_var = tk.IntVar()
+        self.had_contact_var.set(0) 
         #Radiobutton for 'Yes' answer
+        self.had_contact_yes_radio = tk.Radiobutton(self.add_window, text="Yes", variable=self.had_contact_var, value=1)
+        self.had_contact_yes_radio.grid(row=15, column=1, padx=10, pady=5)
         #Radiobutton for 'No' answer
+        self.had_contact_no_radio = tk.Radiobutton(self.add_window, text="No", variable=self.had_contact_var, value=0)
+        self.had_contact_no_radio.grid(row=15, column=2, padx=10, pady=5)
 
         #Ask whether there is a family member who is sick
         #Create a Tkinter IntVar to hold the selected value (0 for No, 1 for Yes)
@@ -241,7 +247,7 @@ class ContactTracing:
 
 
         self.save_button = tk.Button(self.add_window, text="Save", command=self.save_contact) #save contact will be made to save information for the user
-        self.save_button.grid(row=15, column=0, columnspan=2, padx=10, pady=5)
+        self.save_button.grid(row=17, column=0, columnspan=3, padx=10, pady=5)
 
 
     #Create Method:save contact
