@@ -70,8 +70,8 @@ class ContactTracing:
     #Create widgets for default screen for user after opening
     def create_widgets(self):
         self.label = tk.Label(self.window, width=30, background='pink', 
-                              text="Basic Information", 
-                              font=("Helvetica", 20, "bold"))
+                              text="Contact Tracing", 
+                              font=("Courier New", 20, "bold"))
         self.label.pack(pady=10)
 
         self.file_button = tk.Button(self.window, width=20, 
@@ -127,56 +127,73 @@ class ContactTracing:
         self.add_window = tk.Toplevel(self.window)
         self.add_window.title("Add Contact")
 
+        self.title_label = tk.Label(self.add_window, text="Basic Information", font=("Helvetica", 16, "bold"))
+        self.title_label.grid(row=0, column=0, columnspan=2, padx=10, pady=5)
+
         #Infomation for Last Name
         self.first_name_label = tk.Label(self.add_window, text="First Name:")
-        self.first_name_label.grid(row=0, column=0, padx=10, pady=5)
+        self.first_name_label.grid(row=1, column=0, padx=10, pady=5)
         self.first_name_entry = tk.Entry(self.add_window)
-        self.first_name_entry.grid(row=0, column=1, padx=10, pady=5)
+        self.first_name_entry.grid(row=1, column=1, padx=10, pady=5)
 
         #Infomation for First Name
         self.last_name_label = tk.Label(self.add_window, text="Last Name:")
-        self.last_name_label.grid(row=1, column=0, padx=10, pady=5)
+        self.last_name_label.grid(row=2, column=0, padx=10, pady=5)
         self.last_name_entry = tk.Entry(self.add_window)
-        self.last_name_entry.grid(row=1, column=1, padx=10, pady=5)
+        self.last_name_entry.grid(row=2, column=1, padx=10, pady=5)
 
         #Infomation for Address
         self.address_label = tk.Label(self.add_window, text="Address:")
-        self.address_label.grid(row=2, column=0, padx=10, pady=5)
+        self.address_label.grid(row=3, column=0, padx=10, pady=5)
         self.address_entry = tk.Entry(self.add_window)
-        self.address_entry.grid(row=2, column=1, padx=10, pady=5)
+        self.address_entry.grid(row=3, column=1, padx=10, pady=5)
 
         #Infomation for Email-Address
         self.email_address_label = tk.Label(self.add_window, text="Email Address:")
-        self.email_address_label.grid(row=3, column=0, padx=10, pady=5)
+        self.email_address_label.grid(row=4, column=0, padx=10, pady=5)
         self.email_address_entry = tk.Entry(self.add_window)
-        self.email_address_entry.grid(row=3, column=1, padx=10, pady=5)
+        self.email_address_entry.grid(row=4, column=1, padx=10, pady=5)
 
         #Infomation for Contact Number
         self.contact_number_label = tk.Label(self.add_window, text="Contact Number:")
-        self.contact_number_label.grid(row=4, column=0, padx=10, pady=5)
+        self.contact_number_label.grid(row=5, column=0, padx=10, pady=5)
         self.contact_number_entry = tk.Entry(self.add_window)
-        self.contact_number_entry.grid(row=4, column=1, padx=10, pady=5)
+        self.contact_number_entry.grid(row=5, column=1, padx=10, pady=5)
 
         #Infomation for Age
         self.age_label = tk.Label(self.add_window, text="Age:")
-        self.age_label.grid(row=5, column=0, padx=10, pady=5)
+        self.age_label.grid(row=6, column=0, padx=10, pady=5)
         self.age_entry = tk.Entry(self.add_window)
-        self.age_entry.grid(row=5, column=1, padx=10, pady=5)
+        self.age_entry.grid(row=6, column=1, padx=10, pady=5)
 
         #Infomation for Date
         self.date_label = tk.Label(self.add_window, text="Date (MM/DD/YEAR):")
-        self.date_label.grid(row=6, column=0, padx=10, pady=5)
+        self.date_label.grid(row=7, column=0, padx=10, pady=5)
         self.date_entry = tk.Entry(self.add_window)
-        self.date_entry.grid(row=6, column=1, padx=10, pady=5)
+        self.date_entry.grid(row=7, column=1, padx=10, pady=5)
 
         #Infomation for Time
         self.time_label = tk.Label(self.add_window, text="Time:")
-        self.time_label.grid(row=7, column=0, padx=10, pady=5)
+        self.time_label.grid(row=8, column=0, padx=10, pady=5)
         self.time_entry = tk.Entry(self.add_window)
-        self.time_entry.grid(row=7, column=1, padx=10, pady=5)
+        self.time_entry.grid(row=8, column=1, padx=10, pady=5)
+
+        #Add questions about their possible symptoms
+        self.title_label = tk.Label(self.add_window, text="Health Declaration Form", font=("Helvetica", 16, "bold"))
+        self.title_label.grid(row=10, column=0, columnspan=2, padx=10, pady=5)
+
+        #Ask information about their current temperature
+        #Ask whether they had fever in the past few days
+        #Ask whether they have following COVID - 19 related symptoms
+        #Ask whether they travelled internationally within the last 14 days
+        #Ask whethey they had contact with someone diagnosed with COVID-19
+        #Ask whether there is a family member who is sick
+        
+
+
 
         self.save_button = tk.Button(self.add_window, text="Save", command=self.save_contact) #save contact will be made to save information for the user
-        self.save_button.grid(row=8, column=0, columnspan=2, padx=10, pady=5)
+        self.save_button.grid(row=15, column=0, columnspan=2, padx=10, pady=5)
 
 
     #Create Method:save contact
@@ -585,7 +602,7 @@ class ContactTracing:
 
 
     def run(self):
-        pass
+        self.window.mainloop()
 
 contact_tracing = ContactTracing()
 contact_tracing.run()
