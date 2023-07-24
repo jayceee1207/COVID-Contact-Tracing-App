@@ -325,14 +325,16 @@ class ContactTracing:
             self.entries[self.edit_index][7] = time
             self.entries[self.edit_index][8] = temperature
             self.entries[self.edit_index][9] = fever_answer
-            
-
-
-            
+            self.entries[self.edit_index][10] = symptoms_answer
+            self.entries[self.edit_index][11] = travel_answer
+            self.entries[self.edit_index][12] = had_contact_answer
+            self.entries[self.edit_index][13] = certify_answer  
 
         else:
             # Add a new entry
-            self.entries.append([first_name, last_name, address,email_address, contact_number, age, date, time, temperature, fever_answer ])
+            self.entries.append([first_name, last_name, address,email_address, contact_number, 
+                                 age, date, time, temperature, fever_answer, symptoms_answer, travel_answer, 
+                                 had_contact_answer, certify_answer ])
 
         self.add_window.destroy()
         messagebox.showinfo("Success", "Contact saved successfully.")
@@ -446,6 +448,8 @@ class ContactTracing:
             #Radiobutton for 'No' answer
             self.fever_no_radio = tk.Radiobutton(self.add_window, text="No", variable=self.fever_var, value=0)
             self.fever_no_radio.grid(row=12, column=2, padx=10, pady=5)
+
+            
 
 
 
