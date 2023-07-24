@@ -187,12 +187,34 @@ class ContactTracing:
         self.time_label.grid(row=11, column=0, padx=10, pady=5)
         self.time_entry = tk.Entry(self.add_window)
         self.time_entry.grid(row=11, column=1, padx=10, pady=5)
-        
+
         #Ask whether they had fever in the past few days
+        self.fever_label = tk.Label(self.add_window, text="Had fever in the past few days?")
+        self.fever_label.grid(row=12, column=0, padx=10, pady=5)
+        
+        #Create a Tkinter IntVar to hold the selected value (0 for No, 1 for Yes)
+        #Radiobutton for 'Yes' answer
+        #Radiobutton for 'No' answer
+
         #Ask whether they have following COVID - 19 related symptoms
+        #Create a Tkinter IntVar to hold the selected value (0 for No, 1 for Yes)
+        #Radiobutton for 'Yes' answer
+        #Radiobutton for 'No' answer
+
         #Ask whether they travelled internationally within the last 14 days
+        #Create a Tkinter IntVar to hold the selected value (0 for No, 1 for Yes)
+        #Radiobutton for 'Yes' answer
+        #Radiobutton for 'No' answer
+
         #Ask whethey they had contact with someone diagnosed with COVID-19
+        #Create a Tkinter IntVar to hold the selected value (0 for No, 1 for Yes)
+        #Radiobutton for 'Yes' answer
+        #Radiobutton for 'No' answer
+
         #Ask whether there is a family member who is sick
+        #Create a Tkinter IntVar to hold the selected value (0 for No, 1 for Yes)
+        #Radiobutton for 'Yes' answer
+        #Radiobutton for 'No' answer
 
 
 
