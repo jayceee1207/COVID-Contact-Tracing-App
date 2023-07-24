@@ -199,15 +199,26 @@ class ContactTracing:
         #Radiobutton for 'Yes' answer
         self.fever_yes_radio = tk.Radiobutton(self.add_window, text="Yes", variable=self.fever_var, value=1)
         self.fever_yes_radio.grid(row=12, column=1, padx=10, pady=5)
-        
+
         #Radiobutton for 'No' answer
         self.fever_no_radio = tk.Radiobutton(self.add_window, text="No", variable=self.fever_var, value=0)
         self.fever_no_radio.grid(row=12, column=2, padx=10, pady=5)
 
         #Ask whether they have following COVID - 19 related symptoms
+        self.symptoms_label = tk.Label(self.add_window, text="Do you have any of the following\ncommon symptoms of COVID-19:\n -Fever\n -Headache\n -Sore Throat\n -Muscle Pain\n -Flu-like symptoms")
+        self.symptoms_label.grid(row=13, column=0, padx=10, pady=5)
+
         #Create a Tkinter IntVar to hold the selected value (0 for No, 1 for Yes)
+        self.symptoms_var = tk.IntVar()
+        self.symptoms_var.set(0) 
+
         #Radiobutton for 'Yes' answer
+        self.symptoms_yes_radio = tk.Radiobutton(self.add_window, text="Yes", variable=self.symptoms_var, value=1)
+        self.symptoms_yes_radio.grid(row=13, column=1, padx=10, pady=5)
+
         #Radiobutton for 'No' answer
+        self.symptoms_no_radio = tk.Radiobutton(self.add_window, text="No", variable=self.symptoms_var, value=0)
+        self.symptoms_no_radio.grid(row=13, column=2, padx=10, pady=5)
 
         #Ask whether they travelled internationally within the last 14 days
         #Create a Tkinter IntVar to hold the selected value (0 for No, 1 for Yes)
