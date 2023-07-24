@@ -202,7 +202,7 @@ class ContactTracing:
         self.fever_no_radio.grid(row=12, column=2, padx=10, pady=5)
 
         #Ask whether they have following COVID - 19 related symptoms
-        self.symptoms_label = tk.Label(self.add_window, text="Do you have any of the following\ncommon symptoms of COVID-19:\n -Fever\n -Headache\n -Sore Throat\n -Muscle Pain\n -Flu-like symptoms")
+        self.symptoms_label = tk.Label(self.add_window, text="Do you have any of the following\ncommon symptoms of COVID-19:\n -Fever\n -Headache\n -Sore Throat\n -Flu-like symptoms")
         self.symptoms_label.grid(row=13, column=0, padx=10, pady=5)
         #Create a Tkinter IntVar to hold the selected value (0 for No, 1 for Yes)
         self.symptoms_var = tk.IntVar()
@@ -240,14 +240,27 @@ class ContactTracing:
         self.had_contact_no_radio = tk.Radiobutton(self.add_window, text="No", variable=self.had_contact_var, value=0)
         self.had_contact_no_radio.grid(row=15, column=2, padx=10, pady=5)
 
-        #Ask whether there is a family member who is sick
+
+        #Declaration of Truth
+        self.title_label = tk.Label(self.add_window, text="Declaration of Truth", font=("Helvetica", 16, "bold"))
+        self.title_label.grid(row=16, column=0, columnspan=2, padx=10, pady=5)
+
+        #Ask whether they are answering the truth
+        self.certify_label = tk.Label(self.add_window, text="I certify that the above history\nis true to the best of my knowledge.")
+        self.certify_label.grid(row=17, column=0, padx=10, pady=5)
         #Create a Tkinter IntVar to hold the selected value (0 for No, 1 for Yes)
+        self.certify_var = tk.IntVar()
+        self.certify_var.set(0)
         #Radiobutton for 'Yes' answer
+        self.certify_yes_radio = tk.Radiobutton(self.add_window, text="Yes", variable=self.had_contact_var, value=1)
+        self.certify_yes_radio.grid(row=17, column=1, padx=10, pady=5)
         #Radiobutton for 'No' answer
+        self.certify_no_radio = tk.Radiobutton(self.add_window, text="No", variable=self.had_contact_var, value=0)
+        self.certify_no_radio.grid(row=17, column=2, padx=10, pady=5)
 
 
         self.save_button = tk.Button(self.add_window, text="Save", command=self.save_contact) #save contact will be made to save information for the user
-        self.save_button.grid(row=17, column=0, columnspan=3, padx=10, pady=5)
+        self.save_button.grid(row=18, column=0, columnspan=3, padx=10, pady=5)
 
 
     #Create Method:save contact
