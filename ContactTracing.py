@@ -328,7 +328,7 @@ class ContactTracing:
 
         else:
             # Add a new entry
-            self.entries.append([first_name, last_name, address,email_address, contact_number, age, date, time ])
+            self.entries.append([first_name, last_name, address,email_address, contact_number, age, date, time, temperature ])
 
         self.add_window.destroy()
         messagebox.showinfo("Success", "Contact saved successfully.")
@@ -459,12 +459,13 @@ class ContactTracing:
         age = self.age_entry.get()
         date = self.date_entry.get()
         time = self.time_entry.get()
+        temperature = self.temperature_entry.get()
 
         if not first_name or not last_name or not address:
                 messagebox.showerror("Error", "Please fill in all fields.")
                 return
             
-        contact = (first_name, last_name, address, email_address, contact_number, age, date, time)
+        contact = (first_name, last_name, address, email_address, contact_number, age, date, time, temperature)
 
                         #add uppercase so it could still accept capitalized letters
         if not re.match(r'^[a-zA-Z\s]+$', first_name):
@@ -485,6 +486,10 @@ class ContactTracing:
             return
         
         if not re.match(r'^[\+\d\s]+$', age):
+            messagebox.showerror("Error", "Age should only contain digits.")
+            return
+        
+        if not re.match(r'^[\+\d\s]+$', temperature):
             messagebox.showerror("Error", "Age should only contain digits.")
             return
         
