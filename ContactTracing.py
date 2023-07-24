@@ -183,12 +183,17 @@ class ContactTracing:
         self.title_label.grid(row=10, column=0, columnspan=2, padx=10, pady=5)
 
         #Ask information about their current temperature
+        self.time_label = tk.Label(self.add_window, text="Temperature: ")
+        self.time_label.grid(row=11, column=0, padx=10, pady=5)
+        self.time_entry = tk.Entry(self.add_window)
+        self.time_entry.grid(row=11, column=1, padx=10, pady=5)
+        
         #Ask whether they had fever in the past few days
         #Ask whether they have following COVID - 19 related symptoms
         #Ask whether they travelled internationally within the last 14 days
         #Ask whethey they had contact with someone diagnosed with COVID-19
         #Ask whether there is a family member who is sick
-        
+
 
 
 
