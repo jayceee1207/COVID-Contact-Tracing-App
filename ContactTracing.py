@@ -3,14 +3,18 @@
 #Final Project: COVID Contact Tracing App
 
 import tkinter as tk
+from tkinter import PhotoImage
 from tkinter import messagebox, filedialog
+from PIL import ImageTk, Image
 import csv 
 import re 
 
 #PSEUDOCODE
 
+
 #Create class ContactTracing and the GUI
 class ContactTracing:
+    
     def __init__ (self):
         self.window = tk.Tk() # Corrected line to create an instance of the main window
         self.window.title ("Covid-19 Contact Tracing App") 
@@ -20,6 +24,7 @@ class ContactTracing:
         self.window.geometry("500x500")
         self.window.configure(bg="green")
         self.window.resizable(True, True)
+        
 
         self.create_widgets()
 
@@ -66,9 +71,13 @@ class ContactTracing:
                 messagebox.showinfo("Success", "Contact information was saved successfully.")
             except IOError:
                 messagebox.showerror("Error", "Failed to save contact information to file.")
-        
+
     #Create widgets for default screen for user after opening
     def create_widgets(self):
+
+
+    
+
         self.label = tk.Label(self.window, width=30, background='pink', 
                               text="Contact Tracing", 
                               font=("Courier New", 20, "bold"))
@@ -87,6 +96,8 @@ class ContactTracing:
                                     font=("Times New Roman", 12, "bold"),
                                     command=self.add_contact) #we will make add contact to add information
         self.add_button.pack(pady=15)
+
+    
 
         self.edit_button = tk.Button(self.window, width=20, 
                                      text="Edit Information", 
@@ -121,9 +132,16 @@ class ContactTracing:
                                      font=("Times New Roman", 12, "bold"),
                                      command=self.on_exit) #we will make on_exit function
         self.exit_button.pack(pady=10)
-
+   
     #Create Method: add contact
     def add_contact(self):
+
+        def on_entry_click(event):
+            event.widget.config(highlightcolor='red', highlightbackground='red')
+
+        def on_entry_leave(event):
+            event.widget.config(highlightcolor='green', highlightbackground='green')
+
         self.add_window = tk.Toplevel(self.window)
         self.add_window.title("Add Contact")
 
@@ -133,49 +151,49 @@ class ContactTracing:
         #Infomation for Last Name
         self.first_name_label = tk.Label(self.add_window, text="First Name:")
         self.first_name_label.grid(row=1, column=0, padx=10, pady=5)
-        self.first_name_entry = tk.Entry(self.add_window)
+        self.first_name_entry = tk.Entry(self.add_window, highlightthickness = 2)
         self.first_name_entry.grid(row=1, column=1, padx=10, pady=5)
 
         #Infomation for First Name
         self.last_name_label = tk.Label(self.add_window, text="Last Name:")
         self.last_name_label.grid(row=2, column=0, padx=10, pady=5)
-        self.last_name_entry = tk.Entry(self.add_window)
+        self.last_name_entry = tk.Entry(self.add_window, highlightthickness = 2)
         self.last_name_entry.grid(row=2, column=1, padx=10, pady=5)
 
         #Infomation for Address
         self.address_label = tk.Label(self.add_window, text="Address:")
         self.address_label.grid(row=3, column=0, padx=10, pady=5)
-        self.address_entry = tk.Entry(self.add_window)
+        self.address_entry = tk.Entry(self.add_window, highlightthickness = 2)
         self.address_entry.grid(row=3, column=1, padx=10, pady=5)
 
         #Infomation for Email-Address
         self.email_address_label = tk.Label(self.add_window, text="Email Address:")
         self.email_address_label.grid(row=4, column=0, padx=10, pady=5)
-        self.email_address_entry = tk.Entry(self.add_window)
+        self.email_address_entry = tk.Entry(self.add_window, highlightthickness = 2)
         self.email_address_entry.grid(row=4, column=1, padx=10, pady=5)
 
         #Infomation for Contact Number
         self.contact_number_label = tk.Label(self.add_window, text="Contact Number:")
         self.contact_number_label.grid(row=5, column=0, padx=10, pady=5)
-        self.contact_number_entry = tk.Entry(self.add_window)
+        self.contact_number_entry = tk.Entry(self.add_window, highlightthickness = 2)
         self.contact_number_entry.grid(row=5, column=1, padx=10, pady=5)
 
         #Infomation for Age
         self.age_label = tk.Label(self.add_window, text="Age:")
         self.age_label.grid(row=6, column=0, padx=10, pady=5)
-        self.age_entry = tk.Entry(self.add_window)
+        self.age_entry = tk.Entry(self.add_window, highlightthickness = 2)
         self.age_entry.grid(row=6, column=1, padx=10, pady=5)
 
         #Infomation for Date
         self.date_label = tk.Label(self.add_window, text="Date (MM/DD/YEAR):")
         self.date_label.grid(row=7, column=0, padx=10, pady=5)
-        self.date_entry = tk.Entry(self.add_window)
+        self.date_entry = tk.Entry(self.add_window, highlightthickness = 2)
         self.date_entry.grid(row=7, column=1, padx=10, pady=5)
 
         #Infomation for Time
         self.time_label = tk.Label(self.add_window, text="Time:")
         self.time_label.grid(row=8, column=0, padx=10, pady=5)
-        self.time_entry = tk.Entry(self.add_window)
+        self.time_entry = tk.Entry(self.add_window, highlightthickness = 2)
         self.time_entry.grid(row=8, column=1, padx=10, pady=5)
 
         #Add questions about their possible symptoms
@@ -185,8 +203,37 @@ class ContactTracing:
         #Ask information about their current temperature
         self.temperature_label = tk.Label(self.add_window, text="Temperature (Celcius): ")
         self.temperature_label.grid(row=11, column=0, padx=10, pady=5)
-        self.temperature_entry = tk.Entry(self.add_window)
+        self.temperature_entry = tk.Entry(self.add_window, highlightthickness = 2)
         self.temperature_entry.grid(row=11, column=1, padx=10, pady=5)
+
+        
+         # Bind the Entry widgets to the functions
+        self.first_name_entry.bind("<FocusIn>", on_entry_click)
+        self.first_name_entry.bind("<FocusOut>", on_entry_leave)
+
+        self.last_name_entry.bind("<FocusIn>", on_entry_click)
+        self.last_name_entry.bind("<FocusOut>", on_entry_leave)
+
+        self.address_entry.bind("<FocusIn>", on_entry_click)
+        self.address_entry.bind("<FocusOut>", on_entry_leave)
+
+        self.email_address_entry.bind("<FocusIn>", on_entry_click)
+        self.email_address_entry.bind("<FocusOut>", on_entry_leave)
+
+        self.contact_number_entry.bind("<FocusIn>", on_entry_click)
+        self.contact_number_entry.bind("<FocusOut>", on_entry_leave)
+
+        self.age_entry.bind("<FocusIn>", on_entry_click)
+        self.age_entry.bind("<FocusOut>", on_entry_leave)
+
+        self.date_entry.bind("<FocusIn>", on_entry_click)
+        self.date_entry.bind("<FocusOut>", on_entry_leave)
+
+        self.time_entry.bind("<FocusIn>", on_entry_click)
+        self.time_entry.bind("<FocusOut>", on_entry_leave)
+
+        self.temperature_entry.bind("<FocusIn>", on_entry_click)
+        self.temperature_entry.bind("<FocusOut>", on_entry_leave)
 
         #Ask whether they had fever in the past few days
         self.fever_label = tk.Label(self.add_window, text="Had fever in the past few days?")
