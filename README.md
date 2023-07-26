@@ -31,3 +31,23 @@
 ![5](https://github.com/jayceee1207/COVID-Contact-Tracing-App/assets/129476395/e74a76a6-d3d6-4e9b-a25b-caaa8dc37f00)
 
 ##### When the button for deleting information is pressed, users just enter the entry number where "View Information" may be seen. The Delete Information window will then appear, allowing them to delete their response. To see if the information has changed, they can view it again in the view information window.
+
+### 5. VIEW INFORMATION:
+
+![6](https://github.com/jayceee1207/COVID-Contact-Tracing-App/assets/129476395/57d02108-4d99-42f1-b167-5e84cbfb8446)
+
+
+##### When the button for viewing information is pressed, the window will appear including all the information inputted by the users with their basic information and their covid-related questions.
+
+### 6. SEARCH INFORMATION:
+![7](https://github.com/jayceee1207/COVID-Contact-Tracing-App/assets/129476395/55415182-2005-4f3a-b82d-85d84f9b3665)
+
+##### When the button for searching information is pressed, there will be a search criteria, they can search according to the: First Name, Last Name, Address, Date, and Time. After that, they can input any letter that corresponds to the information they are looking for. The result will pop with the summary of the inputted information by the user.
+
+### 7.EXIT:
+![8](https://github.com/jayceee1207/COVID-Contact-Tracing-App/assets/129476395/8144d40e-8323-40b5-bf58-2f6de3271c3c)
+
+##### When the button for exit is pressed, the program will ask for the confirmation whether they want to exit the program. If the user wishes to, all the information inputted will be saved automatically.
+
+
+
