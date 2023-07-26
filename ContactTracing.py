@@ -19,11 +19,11 @@ class ContactTracing:
     def __init__ (self):
 
         self.window = tk.Tk() # Corrected line to create an instance of the main window
-        self.window.title ("Covid-19 Contact Tracing App") 
+        self.window.title ("Covid-19 ViruTrack") 
         self.entries = []
         self.file_path = ""
         self.edit_index = None
-        self.window.geometry("500x700")
+        self.window.geometry("500x717")
         self.window.configure(bg="#0E9FD0")
         self.window.resizable(True, True)
 
@@ -81,61 +81,63 @@ class ContactTracing:
 
     #Create widgets for default screen for user after opening
     def create_widgets(self):
-
+       
         #Create a Canvas widget
         canvas = tk.Canvas(self.window, width=500, height = 300)
         canvas.pack(fill="both", expand=True)
         # Display the background image on the canvas
         canvas.create_image(0, 0, image=self.background_image, anchor="nw")
 
-        self.file_button = tk.Button(self.window, width=20, 
+
+
+        self.file_button = tk.Button(self.window, width=25, 
                                      text="Select File", 
-                                     background='white', 
-                                     font=("Times New Roman", 12, "bold"), 
-                                     command=self.select_file) #this is to select file we want to open.
+                                     background='#266B92', fg = "white",
+                                     font=("Comic Sans MS", 10, "bold"), 
+                                     command=self.select_file, bd=3, relief="ridge") #this is to select file we want to open.
         self.file_button.pack(pady=10)
 
-        self.add_button = tk.Button(self.window, width=20, 
+        self.add_button = tk.Button(self.window, width=25, 
                                     text="Add Information", 
-                                    background='white', 
-                                    font=("Times New Roman", 12, "bold"),
-                                    command=self.add_contact) #we will make add contact to add information
+                                    background='#266B92', fg = "white",
+                                    font=("Comic Sans MS", 10, "bold"),
+                                    command=self.add_contact, bd=3, relief="ridge") #we will make add contact to add information
         self.add_button.pack(pady=15)
 
     
 
-        self.edit_button = tk.Button(self.window, width=20, 
+        self.edit_button = tk.Button(self.window, width=25, 
                                      text="Edit Information", 
-                                     background='white', 
-                                     font=("Times New Roman", 12, "bold"),
-                                     command=self.edit_contact) #we wil make edit contact  function to edit all the inputted contact of the user
+                                     background='#266B92', fg = "white",
+                                     font=("Comic Sans MS", 10, "bold"),
+                                     command=self.edit_contact, bd=3, relief="ridge") #we wil make edit contact  function to edit all the inputted contact of the user
         self.edit_button.pack(pady=10)
 
-        self.delete_button = tk.Button(self.window, width=20, 
+        self.delete_button = tk.Button(self.window, width=25, 
                                        text="Delete Information", 
-                                       background='white', 
-                                       font=("Times New Roman", 12, "bold"),
-                                       command=self.delete_contact) #we will make delete contact to delete information we wish to remove.
+                                       background='#266B92', fg = "white",
+                                       font=("Comic Sans MS", 10, "bold"),
+                                       command=self.delete_contact, bd=3, relief="ridge") #we will make delete contact to delete information we wish to remove.
         self.delete_button.pack(pady=15)
 
-        self.view_button = tk.Button(self.window, width=20, 
+        self.view_button = tk.Button(self.window, width=25, 
                                      text="View Information", 
-                                     background='white', 
-                                     font=("Times New Roman", 12, "bold"),
-                                     command=self.view_contacts) #we will make view contacts function to view all the information
+                                     background='#266B92', fg = "white",
+                                     font=("Comic Sans MS", 10, "bold"),
+                                     command=self.view_contacts, bd=3, relief="ridge") #we will make view contacts function to view all the information
         self.view_button.pack(pady=10)
 
-        self.search_button = tk.Button(self.window, width=20, 
+        self.search_button = tk.Button(self.window, width=25, 
                                        text="Search Contact Information", 
-                                       background='white', 
-                                       font=("Times New Roman", 12, "bold"), 
-                                       command=self.search_contact) #we will make search address book function to search all the information of the user.
+                                       background='#266B92', fg = "white", 
+                                       font=("Comic Sans MS", 10, "bold"), 
+                                       command=self.search_contact, bd=3, relief="ridge") #we will make search address book function to search all the information of the user.
         self.search_button.pack(pady=15)
 
-        self.exit_button = tk.Button(self.window, width=10, 
-                                     text="Exit", background='white', 
-                                     font=("Times New Roman", 12, "bold"),
-                                     command=self.on_exit) #we will make on_exit function
+        self.exit_button = tk.Button(self.window, width=25, 
+                                     text="Exit", background='#266B92', fg = "white",
+                                     font=("Comic Sans MS", 10, "bold"),
+                                     command=self.on_exit, bd=3, relief="ridge") #we will make on_exit function
         self.exit_button.pack(pady=10)
    
     #Create Method: add contact
@@ -149,9 +151,21 @@ class ContactTracing:
 
         self.add_window = tk.Toplevel(self.window)
         self.add_window.title("Add Contact")
+        self.add_window.configure(background="#E6E6FA")
+
+        # Style the labels with a background color and font
+        label_style = {"background": "#266B92", "foreground": "white", "font": ("Helvetica", 10, "bold")}
+        self.title_label = tk.Label(self.add_window, text="Basic Information", **label_style)
+        self.title_label.grid(row=0, column=0, columnspan=3, padx=10, pady=5)
+        # Apply similar styles to other labels.
+
+        # Add a style for the buttons
+        button_style = {"background": "#266B92", "foreground": "white", "font": ("Comic Sans MS", 10, "bold")}
+        self.save_button = tk.Button(self.add_window, text="Save", command=self.save_contact, **button_style)
+        self.save_button.grid(row=18, column=0, columnspan=3, padx=10, pady=5)
 
         self.title_label = tk.Label(self.add_window, text="Basic Information", font=("Helvetica", 16, "bold"))
-        self.title_label.grid(row=0, column=0, columnspan=2, padx=10, pady=5)
+        self.title_label.grid(row=0, column=0, columnspan=3, padx=10, pady=5)
 
         #Infomation for Last Name
         self.first_name_label = tk.Label(self.add_window, text="First Name:")
@@ -203,7 +217,7 @@ class ContactTracing:
 
         #Add questions about their possible symptoms
         self.title_label = tk.Label(self.add_window, text="Health Declaration Form", font=("Helvetica", 16, "bold"))
-        self.title_label.grid(row=10, column=0, columnspan=2, padx=10, pady=5)
+        self.title_label.grid(row=10, column=0, columnspan=3, padx=10, pady=5)
 
         #Ask information about their current temperature
         self.temperature_label = tk.Label(self.add_window, text="Temperature (Celcius): ")
@@ -295,7 +309,7 @@ class ContactTracing:
 
         #Declaration of Truth
         self.title_label = tk.Label(self.add_window, text="Declaration of Truth", font=("Helvetica", 16, "bold"))
-        self.title_label.grid(row=16, column=0, columnspan=2, padx=10, pady=5)
+        self.title_label.grid(row=16, column=0, columnspan=3, padx=10, pady=5)
 
         #Ask whether they are answering the truth
         self.certify_label = tk.Label(self.add_window, text="I certify that the above history\nis true to the best of my knowledge.")
@@ -326,6 +340,14 @@ class ContactTracing:
         date = self.date_entry.get()
         time = self.time_entry.get()
         temperature = self.temperature_entry.get()
+
+        # Get values from the Yes/No questions
+        fever_answer = self.fever_var.get()
+        symptoms_answer = self.symptoms_var.get()
+        travel_answer = self.travel_var.get()   
+        had_contact_answer = self.had_contact_var.get()
+        certify_answer = self.certify_var.get()
+
        
         #add error handlings for the information listed by the user.
         if not first_name or not last_name or not address:
@@ -369,12 +391,18 @@ class ContactTracing:
             self.entries[self.edit_index][6] = date
             self.entries[self.edit_index][7] = time
             self.entries[self.edit_index][8] = temperature
+            self.entries[self.edit_index][9] = fever_answer
+            self.entries[self.edit_index][10] = symptoms_answer
+            self.entries[self.edit_index][11] = travel_answer
+            self.entries[self.edit_index][12] = had_contact_answer
+            self.entries[self.edit_index][13] = certify_answer  
              
 
         else:
             # Add a new entry
             self.entries.append([first_name, last_name, address,email_address, contact_number, 
-                                 age, date, time, temperature])
+                                 age, date, time, temperature ,fever_answer, symptoms_answer, travel_answer, 
+                                 had_contact_answer, certify_answer])
 
             self.add_window.destroy()
             messagebox.showinfo("Success", "Contact saved successfully.")
