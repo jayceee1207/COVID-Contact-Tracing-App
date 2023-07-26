@@ -151,76 +151,65 @@ class ContactTracing:
 
         self.add_window = tk.Toplevel(self.window)
         self.add_window.title("Add Contact")
-        self.add_window.configure(background="#E6E6FA")
+        self.add_window.configure(background="#B1ECFF")
 
-        # Style the labels with a background color and font
-        label_style = {"background": "#266B92", "foreground": "white", "font": ("Helvetica", 10, "bold")}
-        self.title_label = tk.Label(self.add_window, text="Basic Information", **label_style)
-        self.title_label.grid(row=0, column=0, columnspan=3, padx=10, pady=5)
-        # Apply similar styles to other labels.
-
-        # Add a style for the buttons
-        button_style = {"background": "#266B92", "foreground": "white", "font": ("Comic Sans MS", 10, "bold")}
-        self.save_button = tk.Button(self.add_window, text="Save", command=self.save_contact, **button_style)
-        self.save_button.grid(row=18, column=0, columnspan=3, padx=10, pady=5)
-
-        self.title_label = tk.Label(self.add_window, text="Basic Information", font=("Helvetica", 16, "bold"))
+        self.title_label = tk.Label(self.add_window, text="Basic Information", font=("Kristen ITC", 16, "bold"), bg = "#B1ECFF" )
         self.title_label.grid(row=0, column=0, columnspan=3, padx=10, pady=5)
 
         #Infomation for Last Name
-        self.first_name_label = tk.Label(self.add_window, text="First Name:")
+        self.first_name_label = tk.Label(self.add_window, text="First Name:", bg = "#B1ECFF")
         self.first_name_label.grid(row=1, column=0, padx=10, pady=5)
         self.first_name_entry = tk.Entry(self.add_window, highlightthickness = 2)
         self.first_name_entry.grid(row=1, column=1, padx=10, pady=5)
 
         #Infomation for First Name
-        self.last_name_label = tk.Label(self.add_window, text="Last Name:")
+        self.last_name_label = tk.Label(self.add_window, text="Last Name:", bg = "#B1ECFF")
         self.last_name_label.grid(row=2, column=0, padx=10, pady=5)
         self.last_name_entry = tk.Entry(self.add_window, highlightthickness = 2)
         self.last_name_entry.grid(row=2, column=1, padx=10, pady=5)
 
         #Infomation for Address
-        self.address_label = tk.Label(self.add_window, text="Address:")
+        self.address_label = tk.Label(self.add_window, text="Address:", bg = "#B1ECFF")
         self.address_label.grid(row=3, column=0, padx=10, pady=5)
         self.address_entry = tk.Entry(self.add_window, highlightthickness = 2)
         self.address_entry.grid(row=3, column=1, padx=10, pady=5)
 
         #Infomation for Email-Address
-        self.email_address_label = tk.Label(self.add_window, text="Email Address:")
+        self.email_address_label = tk.Label(self.add_window, text="Email Address:", bg = "#B1ECFF")
         self.email_address_label.grid(row=4, column=0, padx=10, pady=5)
         self.email_address_entry = tk.Entry(self.add_window, highlightthickness = 2)
         self.email_address_entry.grid(row=4, column=1, padx=10, pady=5)
 
         #Infomation for Contact Number
-        self.contact_number_label = tk.Label(self.add_window, text="Contact Number:")
+        self.contact_number_label = tk.Label(self.add_window, text="Contact Number:", bg = "#B1ECFF")
         self.contact_number_label.grid(row=5, column=0, padx=10, pady=5)
         self.contact_number_entry = tk.Entry(self.add_window, highlightthickness = 2)
         self.contact_number_entry.grid(row=5, column=1, padx=10, pady=5)
 
         #Infomation for Age
-        self.age_label = tk.Label(self.add_window, text="Age:")
+        self.age_label = tk.Label(self.add_window, text="Age:", bg = "#B1ECFF")
         self.age_label.grid(row=6, column=0, padx=10, pady=5)
         self.age_entry = tk.Entry(self.add_window, highlightthickness = 2)
         self.age_entry.grid(row=6, column=1, padx=10, pady=5)
 
         #Infomation for Date
-        self.date_label = tk.Label(self.add_window, text="Date (MM/DD/YEAR):")
+        self.date_label = tk.Label(self.add_window, text="Date (MM/DD/YEAR):", bg = "#B1ECFF")
         self.date_label.grid(row=7, column=0, padx=10, pady=5)
         self.date_entry = tk.Entry(self.add_window, highlightthickness = 2)
         self.date_entry.grid(row=7, column=1, padx=10, pady=5)
 
         #Infomation for Time
-        self.time_label = tk.Label(self.add_window, text="Time:")
+        self.time_label = tk.Label(self.add_window, text="Time:", bg = "#B1ECFF")
         self.time_label.grid(row=8, column=0, padx=10, pady=5)
         self.time_entry = tk.Entry(self.add_window, highlightthickness = 2)
         self.time_entry.grid(row=8, column=1, padx=10, pady=5)
 
         #Add questions about their possible symptoms
-        self.title_label = tk.Label(self.add_window, text="Health Declaration Form", font=("Helvetica", 16, "bold"))
+        self.title_label = tk.Label(self.add_window, text="Health Declaration Form", font=("Kristen ITC", 16, "bold"), bg = "#B1ECFF")
         self.title_label.grid(row=10, column=0, columnspan=3, padx=10, pady=5)
 
         #Ask information about their current temperature
-        self.temperature_label = tk.Label(self.add_window, text="Temperature (Celcius): ")
+        self.temperature_label = tk.Label(self.add_window, text="Temperature (Celcius): ", bg = "#B1ECFF")
         self.temperature_label.grid(row=11, column=0, padx=10, pady=5)
         self.temperature_entry = tk.Entry(self.add_window, highlightthickness = 2)
         self.temperature_entry.grid(row=11, column=1, padx=10, pady=5)
@@ -255,73 +244,73 @@ class ContactTracing:
         self.temperature_entry.bind("<FocusOut>", on_entry_leave)
 
         #Ask whether they had fever in the past few days
-        self.fever_label = tk.Label(self.add_window, text="Had fever in the past few days?")
+        self.fever_label = tk.Label(self.add_window, text="Had fever in the past few days?", bg = "#B1ECFF")
         self.fever_label.grid(row=12, column=0, padx=10, pady=5)
         #Create a Tkinter IntVar to hold the selected value (0 for No, 1 for Yes)
         self.fever_var = tk.StringVar()
         self.fever_var.set("No")  
         #Radiobutton for 'Yes' answer
-        self.fever_yes_radio = tk.Radiobutton(self.add_window, text="Yes", variable=self.fever_var, value="Yes")
+        self.fever_yes_radio = tk.Radiobutton(self.add_window, text="Yes", variable=self.fever_var, value="Yes", bg = "#B1ECFF")
         self.fever_yes_radio.grid(row=12, column=1, padx=10, pady=5)
         #Radiobutton for 'No' answer
-        self.fever_no_radio = tk.Radiobutton(self.add_window, text="No", variable=self.fever_var, value="No")
+        self.fever_no_radio = tk.Radiobutton(self.add_window, text="No", variable=self.fever_var, value="No", bg = "#B1ECFF")
         self.fever_no_radio.grid(row=12, column=2, padx=10, pady=5)
 
         #Ask whether they have following COVID - 19 related symptoms
-        self.symptoms_label = tk.Label(self.add_window, text="Do you have any of the following\ncommon symptoms of COVID-19:\n -Fever\n -Headache\n -Sore Throat\n -Flu-like symptoms")
+        self.symptoms_label = tk.Label(self.add_window, text="Do you have any of the following\ncommon symptoms of COVID-19:\n -Fever\n -Headache\n -Sore Throat\n -Flu-like symptoms", bg = "#B1ECFF")
         self.symptoms_label.grid(row=13, column=0, padx=10, pady=5)
         #Create a Tkinter IntVar to hold the selected value (0 for No, 1 for Yes)
         self.symptoms_var = tk.StringVar()
         self.symptoms_var.set("No") 
         #Radiobutton for 'Yes' answer
-        self.symptoms_yes_radio = tk.Radiobutton(self.add_window, text="Yes", variable=self.symptoms_var, value="Yes")
+        self.symptoms_yes_radio = tk.Radiobutton(self.add_window, text="Yes", variable=self.symptoms_var, value="Yes", bg = "#B1ECFF")
         self.symptoms_yes_radio.grid(row=13, column=1, padx=10, pady=5)
         #Radiobutton for 'No' answer
-        self.symptoms_no_radio = tk.Radiobutton(self.add_window, text="No", variable=self.symptoms_var, value="No")
+        self.symptoms_no_radio = tk.Radiobutton(self.add_window, text="No", variable=self.symptoms_var, value="No", bg = "#B1ECFF")
         self.symptoms_no_radio.grid(row=13, column=2, padx=10, pady=5)
 
         #Ask whether they travelled internationally within the last 14 days
-        self.travel_label = tk.Label(self.add_window, text="Have you travelled internationally\nwithin the last 14 days?")
+        self.travel_label = tk.Label(self.add_window, text="Have you travelled internationally\nwithin the last 14 days?", bg = "#B1ECFF")
         self.travel_label.grid(row=14, column=0, padx=10, pady=5)
         #Create a Tkinter StringVar to hold the selected value 
         self.travel_var = tk.StringVar()
         self.travel_var.set("No") 
         #Radiobutton for 'Yes' answer
-        self.travel_yes_radio = tk.Radiobutton(self.add_window, text="Yes", variable=self.travel_var, value="Yes")
+        self.travel_yes_radio = tk.Radiobutton(self.add_window, text="Yes", variable=self.travel_var, value="Yes", bg = "#B1ECFF")
         self.travel_yes_radio.grid(row=14, column=1, padx=10, pady=5)
         #Radiobutton for 'No' answer
-        self.travel_no_radio = tk.Radiobutton(self.add_window, text="No", variable=self.travel_var, value="No")
+        self.travel_no_radio = tk.Radiobutton(self.add_window, text="No", variable=self.travel_var, value="No", bg = "#B1ECFF")
         self.travel_no_radio.grid(row=14, column=2, padx=10, pady=5)
 
         #Ask whethey they had contact with someone diagnosed with COVID-19
-        self.had_contact_label = tk.Label(self.add_window, text="Have you had exposure to someone\ndiagnosed with COVID-19?")
+        self.had_contact_label = tk.Label(self.add_window, text="Have you had exposure to someone\ndiagnosed with COVID-19?", bg = "#B1ECFF")
         self.had_contact_label.grid(row=15, column=0, padx=10, pady=5)
         #Create a Tkinter IntVar to hold the selected value (0 for No, 1 for Yes)
         self.had_contact_var = tk.StringVar()
         self.had_contact_var.set("No") 
         #Radiobutton for 'Yes' answer
-        self.had_contact_yes_radio = tk.Radiobutton(self.add_window, text="Yes", variable=self.had_contact_var, value="Yes")
+        self.had_contact_yes_radio = tk.Radiobutton(self.add_window, text="Yes", variable=self.had_contact_var, value="Yes", bg = "#B1ECFF")
         self.had_contact_yes_radio.grid(row=15, column=1, padx=10, pady=5)
         #Radiobutton for 'No' answer
-        self.had_contact_no_radio = tk.Radiobutton(self.add_window, text="No", variable=self.had_contact_var, value="No")
+        self.had_contact_no_radio = tk.Radiobutton(self.add_window, text="No", variable=self.had_contact_var, value="No", bg = "#B1ECFF")
         self.had_contact_no_radio.grid(row=15, column=2, padx=10, pady=5)
 
 
         #Declaration of Truth
-        self.title_label = tk.Label(self.add_window, text="Declaration of Truth", font=("Helvetica", 16, "bold"))
+        self.title_label = tk.Label(self.add_window, text="Declaration of Truth", font=("Kristen ITC", 16, "bold"), bg = "#B1ECFF")
         self.title_label.grid(row=16, column=0, columnspan=3, padx=10, pady=5)
 
         #Ask whether they are answering the truth
-        self.certify_label = tk.Label(self.add_window, text="I certify that the above history\nis true to the best of my knowledge.")
+        self.certify_label = tk.Label(self.add_window, text="I certify that the above history\nis true to the best of my knowledge.", bg = "#B1ECFF")
         self.certify_label.grid(row=17, column=0, padx=10, pady=5)
         #Create a Tkinter StringVar to hold the selected value (0 for No, 1 for Yes)
         self.certify_var = tk.StringVar()
         self.certify_var.set("No")
         #Radiobutton for 'Yes' answer
-        self.certify_yes_radio = tk.Radiobutton(self.add_window, text="Yes", variable=self.certify_var, value="Yes")
+        self.certify_yes_radio = tk.Radiobutton(self.add_window, text="Yes", variable=self.certify_var, value="Yes", bg = "#B1ECFF")
         self.certify_yes_radio.grid(row=17, column=1, padx=10, pady=5)
         #Radiobutton for 'No' answer
-        self.certify_no_radio = tk.Radiobutton(self.add_window, text="No", variable=self.certify_var, value="No")
+        self.certify_no_radio = tk.Radiobutton(self.add_window, text="No", variable=self.certify_var, value="No", bg = "#B1ECFF")
         self.certify_no_radio.grid(row=17, column=2, padx=10, pady=5)
 
 
