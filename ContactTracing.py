@@ -623,6 +623,10 @@ class ContactTracing:
         self.canvas = tk.Canvas(self.view_window)
         self.canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
 
+        # Set the background color and font for the labels
+        bg_color = "#f0f0f0"
+        label_font = ("Kirsten ITC", 12, "bold")
+
         self.scrollbar = tk.Scrollbar(self.view_window, command=self.canvas.yview)
         self.scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
 
