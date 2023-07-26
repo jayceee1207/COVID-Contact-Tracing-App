@@ -322,13 +322,6 @@ class ContactTracing:
         time = self.time_entry.get()
         temperature = self.temperature_entry.get()
        
-        # Get values from the Yes/No questions
-        fever_answer = self.fever_var.get()
-        symptoms_answer = self.symptoms_var.get()
-        travel_answer = self.travel_var.get()   
-        had_contact_answer = self.had_contact_var.get()
-        certify_answer = self.certify_var.get()
-
         #add error handlings for the information listed by the user.
         if not first_name or not last_name or not address:
             messagebox.showerror("Error!", "Please fill all the fields.")
@@ -371,20 +364,15 @@ class ContactTracing:
             self.entries[self.edit_index][6] = date
             self.entries[self.edit_index][7] = time
             self.entries[self.edit_index][8] = temperature
-            self.entries[self.edit_index][9] = fever_answer
-            self.entries[self.edit_index][10] = symptoms_answer
-            self.entries[self.edit_index][11] = travel_answer
-            self.entries[self.edit_index][12] = had_contact_answer
-            self.entries[self.edit_index][13] = certify_answer  
+             
 
         else:
             # Add a new entry
             self.entries.append([first_name, last_name, address,email_address, contact_number, 
-                                 age, date, time, temperature, fever_answer, symptoms_answer, travel_answer, 
-                                 had_contact_answer, certify_answer])
+                                 age, date, time, temperature])
 
-        self.add_window.destroy()
-        messagebox.showinfo("Success", "Contact saved successfully.")
+            self.add_window.destroy()
+            messagebox.showinfo("Success", "Contact saved successfully.")
 
     #Create Method: edit contact
     def edit_contact(self):
@@ -482,6 +470,9 @@ class ContactTracing:
             self.temperature_label.grid(row=8, column=0, padx=10, pady=5)
             self.temperature_entry = tk.Entry(self.edit_window)
             self.temperature_entry.grid(row=8, column=1, padx=10, pady=5)
+
+            self.save_button = tk.Button(self.edit_window, text="Save", command=self.save_contact) #save contact will be made to save information for the user
+            self.save_button.grid(row=10, column=0, columnspan=3, padx=10, pady=5)
 
         
             self.first_name_entry.insert(tk.END, contact[0])
