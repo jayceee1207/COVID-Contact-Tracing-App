@@ -8,6 +8,7 @@ from tkinter import messagebox, filedialog
 from PIL import ImageTk, Image
 import csv 
 import re 
+import os
 
 #PSEUDOCODE
 
@@ -16,16 +17,22 @@ import re
 class ContactTracing:
     
     def __init__ (self):
+
         self.window = tk.Tk() # Corrected line to create an instance of the main window
         self.window.title ("Covid-19 Contact Tracing App") 
         self.entries = []
         self.file_path = ""
         self.edit_index = None
-        self.window.geometry("500x500")
-        self.window.configure(bg="green")
+        self.window.geometry("500x700")
+        self.window.configure(bg="#0E9FD0")
         self.window.resizable(True, True)
-        
 
+        #add background image
+        self.background_image = PhotoImage(file="virutrack.png")
+        
+        # Replace 'path/to/your/background_image.png' with the actual file path of your image
+
+       
         self.create_widgets()
 
     #Add file and its path
@@ -75,13 +82,11 @@ class ContactTracing:
     #Create widgets for default screen for user after opening
     def create_widgets(self):
 
-
-    
-
-        self.label = tk.Label(self.window, width=30, background='pink', 
-                              text="Contact Tracing", 
-                              font=("Courier New", 20, "bold"))
-        self.label.pack(pady=10)
+        #Create a Canvas widget
+        canvas = tk.Canvas(self.window, width=500, height = 300)
+        canvas.pack(fill="both", expand=True)
+        # Display the background image on the canvas
+        canvas.create_image(0, 0, image=self.background_image, anchor="nw")
 
         self.file_button = tk.Button(self.window, width=20, 
                                      text="Select File", 
@@ -485,9 +490,7 @@ class ContactTracing:
             self.time_entry.insert(tk.END, contact[7])
             self.temperature_entry.insert(tk.END, contact [8])
             
-            
-
-
+        
         except ValueError:
                 messagebox.showinfo("Invalid Input","Entry number must be a valid number.")
 
