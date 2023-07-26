@@ -18,9 +18,9 @@
 
 ### 3. EDIT INFORMATION:
 
-![image](https://github.com/jayceee1207/COVID-Contact-Tracing-App/assets/129476395/904ded13-8ca3-4425-a9c0-4ecb48552d56)
-
 
 ##### When the button for editing information is pressed, users just enter the entry number where "View Information" may be seen. The Edit Information window will then appear, allowing them to edit and save their prior response. To see if the information has changed, they can view it again in the program that lets them view information.  
 
+### 4. DELETE INFORMATION:
 
+##### When the button for deleting information is pressed, users just enter the entry number where "View Information" may be seen. The Delete Information window will then appear, allowing them to delete their response. To see if the information has changed, they can view it again in the view information window.
