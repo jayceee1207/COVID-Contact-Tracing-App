@@ -687,6 +687,7 @@ class ContactTracing:
 
 
     def perform_search(self):
+        
         criteria = self.criteria_var.get()
         query = self.query_entry.get()
 
