@@ -1,4 +1,4 @@
-# COVID-Contact-Tracing-App
+#VIRUTRACK COVID-Contact-Tracing-App
 
 
 
@@ -48,6 +48,38 @@
 ![8](https://github.com/jayceee1207/COVID-Contact-Tracing-App/assets/129476395/8144d40e-8323-40b5-bf58-2f6de3271c3c)
 
 ##### When the button for exit is pressed, the program will ask for the confirmation whether they want to exit the program. If the user wishes to, all the information inputted will be saved automatically.
+
+
+##Module Used:
+
+### tkinter
+##### It is the standard Python interface to the Tk GUI toolkit. It provides a set of tools and widgets to create graphical user interfaces. With tkinter, you can create windows, dialogs, buttons, text boxes, and more. It's widely used for creating simple GUI applications.
+
+### PhotoImage
+##### This class in tkinter is used to display images in a GUI application. It supports GIF, PGM, PPM, and PNG image formats.
+
+### messagebox
+##### It is a module within tkinter that provides a simple way to display dialog boxes with messages to the user. These dialog boxes can be used for showing information, warnings, errors, or asking for simple user input.
+
+### filedialog
+##### Another module within tkinter, it provides dialog boxes to allow the user to interact with the file system. You can use it to open or save files, choose directories, and more.
+
+### PIL
+##### PIL stands for Python Imaging Library. However, since Python 3.1, the "PIL" library has been renamed to "Pillow" and is used to manipulate images. It supports opening, manipulating, and saving various image file formats.
+
+### ImageTk
+##### It is a module within PIL/Pillow that allows you to display images in a tkinter GUI application. It provides an interface between Pillow images and tkinter.
+
+### csv
+##### This is a built-in Python module that provides functionality for both reading from and writing to CSV (Comma-Separated Values) files. It's useful for handling tabular data in a simple text-based format.
+
+### re
+##### This module stands for regular expressions. It provides support for pattern matching with strings. Regular expressions are powerful tools for searching, matching, and manipulating text based on specific patterns.
+
+### os
+##### This is another built-in Python module that provides a way to interact with the operating system. It allows you to perform various operations related to files, directories, processes, and more. It's commonly used for tasks like file manipulation, path handling, and environment information retrieval.
+
+
 
 
 
