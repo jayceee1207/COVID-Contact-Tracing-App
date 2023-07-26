@@ -618,14 +618,14 @@ class ContactTracing:
 
         self.view_window = tk.Toplevel(self.window)
         self.view_window.title("View Contacts")
-        self.view_window.geometry("1500x500")
-
-        self.canvas = tk.Canvas(self.view_window)
-        self.canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+        self.view_window.geometry("1425x500")
 
         # Set the background color and font for the labels
         bg_color = "#f0f0f0"
         label_font = ("Kirsten ITC", 12, "bold")
+
+        self.canvas = tk.Canvas(self.view_window, bg=bg_color)  # Set background color
+        self.canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
 
         self.scrollbar = tk.Scrollbar(self.view_window, command=self.canvas.yview)
         self.scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
@@ -638,7 +638,7 @@ class ContactTracing:
         labels = ["Entry #", "First Name", "Last Name", "Address", "Email-Address","Contact Number","Age", "Date", "Time", "Temperature", "Q1", "Q2", "Q3", "Q4", "Certify"]
 
         for col, label in enumerate(labels):
-            column_label = tk.Label(self.view_frame, text=label, padx=10, pady=5, font=("Arial", 12, "bold"))
+            column_label = tk.Label(self.view_frame, text=label, padx=10, pady=5, font=label_font, bg="#0E9FD0" )
             column_label.grid(row=0, column=col, sticky = "nsew")
 
         for i, contact in enumerate(self.entries, 1):
